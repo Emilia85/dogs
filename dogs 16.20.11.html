@@ -1,0 +1,1937 @@
+<style>
+    .vizitatori {
+
+        width: 90%;
+        max-width: 500px;
+        margin: 50px auto;
+        display: flex;
+        align-items: center;
+        grid-template-columns: 100%;
+        /*este in legatura cu display: grid;*/
+        justify-content: center;
+
+    }
+
+    .leftVizite {
+        width: 60%;
+        height: 200px;
+        border-radius: 8px;
+    }
+
+    .center {
+        width: 20%;
+        height: 200px;
+        border-radius: 8px;
+    }
+
+    .rightVizite {
+        width: 40%;
+        height: 200px;
+        border-radius: 8px;
+    }
+
+    .eye {
+        margin: auto;
+        margin-left: -480px;
+        margin-top: 70px;
+        width: 70px;
+        height: 70px;
+        border: solid 1px #000;
+        border-radius: 600% 70%;
+        transform: rotate(45deg);
+    }
+
+    .eye:before {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: #000;
+        width: 34px;
+        height: 34px;
+        border: solid 6px rgb(10, 211, 238);
+        border-radius: 50%;
+        left: 11px;
+        top: 11px;
+    }
+
+    #count {
+        margin: auto;
+        margin-top: 100px;
+        margin-left: 15px;
+        width: 30px;
+        height: 70%;
+    }
+
+    #thanks {
+        margin: auto;
+        margin-top: 100px;
+        margin-left: -25;
+        /*width: 860px;
+      */
+        width: 100%;
+        white-space: nowrap;
+        height: 50%;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .logo img {
+        width: 100px;
+    }
+
+    nav {
+        width: 960 px;
+        margin: 0 auto;
+        display: inline-block;
+        justify-content: space-between;
+    }
+
+    .lang-menu {
+        margin-top: 25 px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .selected-lang {
+        cursor: pointer;
+        display: inline-block;
+        justify-content: space-between;
+        line-height: 2;
+        width: 100px;
+    }
+
+    .selected-lang:before {
+        content: '';
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        text-align: center;
+        background-image: url(https://www.phoca.cz/images/flag-icons.png);
+    }
+
+    .lang-menu ul {
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        border: 1px solid #f8f8f8;
+        box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 20;
+    }
+
+    .lang-menu ul li {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .lang-menu ul li a {
+        width: 140px;
+        display: inline-block;
+        padding: 5px 10px;
+    }
+
+    .lang-menu ul li a:before {
+        content: '';
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+        vertical-align: middle;
+
+    }
+
+    .lang-menu ul li a:hover {
+        background-color: #f2f2f2;
+
+    }
+
+    .de:before {
+        background-image: url(https://icons.iconarchive.com/icons/hopstarter/flag-borderless/32/Germany-icon.png);
+    }
+
+    .us:before {
+        background-image: url(https://icons.iconarchive.com/icons/icons-land/vista-flags/32/United-States-Flag-1-icon.png);
+    }
+
+    .fr:before {
+        background-image: url(https://icons.iconarchive.com/icons/hopstarter/flag-borderless/32/France-icon.png);
+    }
+
+    .it:before {
+        background-image: url(https://icons.iconarchive.com/icons/hopstarter/flag-borderless/32/Italy-icon.png);
+    }
+
+    .ro:before {
+        background-image: url(https://icons.iconarchive.com/icons/hopstarter/flag-borderless/32/Romania-icon.png);
+    }
+
+    .es:before {
+        background-image: url(https://icons.iconarchive.com/icons/hopstarter/flag-borderless/32/Spain-icon.png);
+    }
+
+    .pt:before {
+        background-image: url(https://icons.iconarchive.com/icons/hopstarter/flag-borderless/32/Portugal-icon.png);
+    }
+
+    .lang-menu:hover ul {
+        display: block;
+    }
+
+    .paw-bottom {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        height: 120px;
+        width: 120px;
+        background: rgb(44, 212, 44);
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        display: inline-block;
+        justify-content: space-between;
+        line-height: 2;
+        width: 100px;
+    }
+
+    #labute {
+        position: absolute;
+        margin-top: -25px;
+        margin-left: -20px;
+    }
+
+    .paw-bottom :before {
+        content: '';
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+    }
+
+    .paw-bottom ul {
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        border: 1px solid #f8f8f8;
+        box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 20;
+    }
+
+    .paw-bottom ul li {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .paw-bottom ul li a {
+        width: 90px;
+        display: inline-block;
+        padding: 5px 10px;
+
+    }
+
+    .paw-bottom ul li a:before {
+        content: '';
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+        vertical-align: middle;
+
+    }
+
+    .paw-bottom ul li a:hover {
+        background-color: #f2f2f2;
+
+    }
+
+    .paw-bottom:hover ul {
+        display: block;
+</style>
+<header>
+    <nav>
+        <div class="logo"><a href="#"></a></div>
+        <div class="lang-menu">
+            <div class="selected-lang">Select</div>
+            <ul>
+                <li>
+                    <a href="#" class="de" onclick="German()"> Deutsch</a>
+                </li>
+
+                <li>
+                    <a href="#" class="us" onclick="English()">English</a>
+                </li>
+
+                <li>
+                    <a href="#" class="fr" onclick="French()"> Français</a>
+                </li>
+
+                <li>
+                    <a href="#" class="it" onclick="Italian()">Italiano</a>
+                </li>
+
+                <li>
+                    <a href="#" class="ro" onclick="Romana()">Romana</a>
+                </li>
+
+                <li>
+                    <a href="#" class="es" onclick="Spaniola()">Español</a>
+                </li>
+
+                <li>
+                    <a href="#" class="pt" onclick="Portugheza()">Português</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="logo"><a href="#"></a></div>
+<div class="paw-bottom"><span style="color: white;">Push</span><span id="labute" style='font-size:25px;'> &#128062;
+        &#128062;</span>
+    <ul>
+        <li>
+            <a id="airedale1" href="#airedale"> Airedale Terrier</a>
+        </li>
+
+        <li>
+            <a id="akitaamerican1" href="#akitaamerican"> Akita American</a>
+        </li>
+
+        <li>
+            <a id="akita1" href="#akita"> Akita Inu</a>
+        </li>
+
+        <li>
+            <a id="pitbull2" href="#pitbull"> American Bully</a>
+        </li>
+
+        <li>
+            <a id="pitbull1" href="#pitbull"> American Pit Bull Terrier</a>
+        </li>
+
+        <li>
+            <a id="amstaff1" href="#amstaff"> American Staffordshire Terrier</a>
+        </li>
+
+        <li>
+            <a id="cocker2" href="#cocker"> Aristocrat Clumber Spaniel</a>
+        </li>
+
+        <li>
+            <a id="cattle" href="#cattle"> Australian Cattle Dog</a>
+        </li>
+
+        <li>
+            <a id="yorkshire2" href="#yorkshire"> Australian Silky Terrier</a>
+        </li>
+
+        <li>
+            <a id="ogar1" href="#ogar"> Azawakh</a>
+        </li>
+
+        <li>
+            <a id="ogar2" href="#ogar"> Barzoi</a>
+        </li>
+
+        <li>
+            <a id="bassetHoundul1" href="#bassetHoundul"> Basset Hound</a>
+        </li>
+
+        <li>
+            <a id="beagle" href="#beagle"> Beagle</a>
+        </li>
+
+        <li>
+            <a id="beauceron1" href="#beauceron"> Beauceron</a>
+        </li>
+
+        <li>
+            <a id="bedlington1" href="#bedlington"> Bedlington Terrier</a>
+        </li>
+
+        <li>
+            <a id="bolognez1" href="#bolognez"> Bichon Bolognez</a>
+        </li>
+
+        <li>
+            <a id="frise" href="#frise"> Bichon Frisé</a>
+        </li>
+
+        <li>
+            <a id="shihtzu2" href="#shihtzu"> Bichon Havanez</a>
+        </li>
+
+        <li>
+            <a id="maltez" href="#maltez"> Bichon Maltez</a>
+        </li>
+
+        <li>
+            <a id="blackrussian" href="#blackrussian"> Black Russian Terrier</a>
+        </li>
+
+        <li>
+            <a id="bloodhound1" href="#bloodhound"> Bloodhound</a>
+        </li>
+
+        <li>
+            <a id="bobtail1" href="#bobtail"> Bobtail</a>
+        </li>
+
+        <li>
+            <a id="corso2" href="#corso"> Boerboel</a>
+        </li>
+
+        <li>
+            <a id="border" href="#border"> Border Collie</a>
+        </li>
+
+        <li>
+            <a id="borderTerrier" href="#borderTerrier"> Border Terrier</a>
+        </li>
+
+        <li>
+            <a id="boxer" href="#boxer"> Boxer</a>
+        </li>
+
+        <li>
+            <a id="vizsla2" href="#vizsla"> Brac German</a>
+        </li>
+
+        <li>
+            <a id="vizsla3" href="#vizsla"> Brac Italian</a>
+        </li>
+
+        <li>
+            <a id="bullterrier" href="#bullterrier"> Bull Terrier</a>
+        </li>
+
+        <li>
+            <a id="buldog2" href="#buldog"> Bulldog American</a>
+        </li>
+
+        <li>
+            <a id="buldog1" href="#buldog"> Bulldog Englez</a>
+        </li>
+
+        <li>
+            <a id="bulldogfrancez" href="#bulldogfrancez"> Bulldog Francez</a>
+        </li>
+
+        <li>
+            <a id="bullmastiff1" href="#bullmastiff"> Bullmastiff</a>
+        </li>
+
+        <li>
+            <a id="mastifftibetan3" href="#mastifftibetan"> Bully Kutta</a>
+        </li>
+
+        <li>
+            <a id="buldog3" href="#buldog"> Ca de Bou</a>
+        </li>
+
+        <li>
+            <a id="chinezesccucreasta1" href="#chinezesccucreasta"> Caine Chinezesc cu Creasta</a>
+        </li>
+
+        <li>
+            <a id="portughez1" href="#portughez"> Caine de apa Portughez</a>
+        </li>
+
+        <li>
+            <a id="portughez2" href="#portughez"> Caine de apa Spaniol</a>
+        </li>
+
+        <li>
+            <a id="carpatin2" href="#carpatin"> Caine de munte Estrela</a>
+        </li>
+
+        <li>
+            <a id="westwhite3" href="#westwhite"> Cairn Terrier</a>
+        </li>
+
+        <li>
+            <a id="corso1" href="#corso"> Cane Corso</a>
+        </li>
+
+        <li>
+            <a id="corgi2" href="#corgi"> Cardigan Welsh Corgi</a>
+        </li>
+
+        <li>
+            <a id="cavalier" href="#cavalier"> Cavalier King Charles Spaniel</a>
+        </li>
+
+        <li>
+            <a id="skye2" href="#skye"> Cesky Terrier</a>
+        </li>
+
+        <li>
+            <a id="ogar3" href="#ogar"> Chart Polski</a>
+        </li>
+
+        <li>
+            <a id="golden2" href="#golden"> Chesapeake Bay Retriever</a>
+        </li>
+
+        <li>
+            <a id="chihuahua1" href="#chihuahua"> Chihuahua</a>
+        </li>
+
+        <li>
+            <a id="chowchow" href="#chowchow"> Chow Chow</a>
+        </li>
+
+        <li>
+            <a id="belgian3" href="#belgian"> Ciobanesc Alb Elvetian</a>
+        </li>
+
+        <li>
+            <a id="australian" href="#australian"> Ciobanesc Australian</a>
+        </li>
+
+        <li>
+            <a id="belgian2" href="#belgian"> Ciobanesc Belgian de Tervuren</a>
+        </li>
+
+        <li>
+            <a id="belgian1" href="#belgian"> Ciobanesc Belgian Groenendael</a>
+        </li>
+
+        <li>
+            <a id="komondor2" href="#komondor"> Ciobanesc Bergamasco</a>
+        </li>
+
+        <li>
+            <a id="pirinei2" href="#pirinei"> Ciobanesc de Anatolia</a>
+        </li>
+
+        <li>
+            <a id="berna" href="#berna"> Ciobanesc de Berna</a>
+        </li>
+
+        <li>
+            <a id="beauceron2" href="#beauceron"> Ciobanesc de Lagorai</a>
+        </li>
+
+        <li>
+            <a id="pirinei1" href="#pirinei"> Ciobanesc de Pirinei</a>
+        </li>
+
+        <li>
+            <a id="collie2" href="#collie"> Ciobanesc de Shetland</a>
+        </li>
+
+        <li>
+            <a id="mioritic2" href="#mioritic"> Ciobanesc de Sud din Rusia</a>
+        </li>
+
+        <li>
+            <a id="german1" href="#german"> Ciobanesc German</a>
+        </li>
+
+        <li>
+            <a id="pirinei3" href="#pirinei"> Ciobanesc Maremmano Abruzzese</a>
+        </li>
+
+        <li>
+            <a id="bobtail2" href="#bobtail"> Ciobanesc Polonez Lowland</a>
+        </li>
+
+        <li>
+            <a id="carpatin1" href="#carpatin"> Ciobanesc Romanesc Carpatin</a>
+        </li>
+
+        <li>
+            <a id="corb" href="#corb"> Ciobanesc Romanesc Corb</a>
+        </li>
+
+        <li>
+            <a id="bucovina" href="#bucovina"> Ciobanesc de Bucovina</a>
+        </li>
+
+        <li>
+            <a id="mioritic1" href="#mioritic"> Ciobanesc Mioritic</a>
+        </li>
+
+        <li>
+            <a id="german2" href="#german"> Ciobanesc Vallhund Suedez</a>
+        </li>
+
+        <li>
+            <a id="pudel3" href="#pudel"> Cockapoo</a>
+        </li>
+
+        <li>
+            <a id="cocker1" href="#cocker"> Cocker Spaniel Englez</a>
+        </li>
+
+        <li>
+            <a id="collie1" href="#collie"> Collie</a>
+        </li>
+
+        <li>
+            <a id="bassetHoundul2" href="#bassetHoundul"> Copoi Ardelenesc</a>
+        </li>
+
+        <li>
+            <a id="bloodhound3" href="#bloodhound"> Copoi Bavarez de Munte</a>
+        </li>
+
+        <li>
+            <a id="corgi" href="#Corgi"> Corgi</a>
+        </li>
+
+        <li>
+            <a id="bolognez2" href="#bolognez"> Coton de Tulear</a>
+        </li>
+
+        <li>
+            <a id="terranova3" href="#terranova"> Curly Coated Retriever</a>
+        </li>
+
+        <li>
+            <a id="dalmatian" href="#dalmatian"> Dalmatian</a>
+        </li>
+
+        <li>
+            <a id="ogar4" href="#ogar"> Deerhound</a>
+        </li>
+
+        <li>
+            <a id="doberman" href="#doberman"> Doberman Pinscher</a>
+        </li>
+
+        <li>
+            <a id="argentin1" href="#argentin"> Dog Argentinian</a>
+        </li>
+
+        <li>
+            <a id="doggerman" href="#doggerman"> Dog German</a>
+        </li>
+
+        <li>
+            <a id="dogbordeaux1" href="#dogbordeaux"> Dogue de Bordeaux</a>
+        </li>
+
+        <li>
+            <a id="pointer4" href="#pointer"> Drahtaar</a>
+        </li>
+
+        <li>
+            <a id="cehoslovac2" href="#cehoslovac"> Elkhound Norvegian</a>
+        </li>
+
+        <li>
+            <a id="setter5" href="#setter"> Épagneul Breton</a>
+        </li>
+
+        <li>
+            <a id="napoletan4" href="#napoletan"> Fila Brasileiro</a>
+        </li>
+
+        <li>
+            <a id="fox" href="#fox"> Fox Terrier</a>
+        </li>
+
+        <li>
+            <a id="bloodhound2" href="#bloodhound"> German Sheperd Bloodhound</a>
+        </li>
+
+        <li>
+            <a id="golden1" href="#golden"> Golden Retriever</a>
+        </li>
+
+        <li>
+            <a id="pudel2" href="#pudel"> GoldenDoodle</a>
+        </li>
+
+        <li>
+            <a id="setter4" href="#setter"> Gordon Setter </a>
+        </li>
+
+        <li>
+            <a id="ogar5" href="#ogar"> Greyhound</a>
+        </li>
+
+        <li>
+            <a id="akita3" href="#akita"> Hockkaido-inu</a>
+        </li>
+
+        <li>
+            <a id="husky" href="#husky"> Husky Siberian</a>
+        </li>
+
+        <li>
+            <a id="irish1" href="#irish"> Irish Terrier</a>
+        </li>
+
+        <li>
+            <a id="ogar6" href="#ogar"> Irish Wolfhound</a>
+        </li>
+
+        <li>
+            <a id="jackrussel" href="#jackrussel"> Jack Russell Terrier</a>
+        </li>
+
+        <li>
+            <a id="akita4" href="#akita"> Kai Ken</a>
+        </li>
+
+        <li>
+            <a id="keeshonden1" href="#keeshonden"> Keeshonden</a>
+        </li>
+
+        <li>
+            <a id="irish2" href="#irish"> Kerry Blue Terrier</a>
+        </li>
+
+        <li>
+            <a id="akita2" href="#akita"> Kishu</a>
+        </li>
+
+        <li>
+            <a id="rhodesian2" href="#rhodesian"> Kombai</a>
+        </li>
+
+        <li>
+            <a id="komondor1" href="#komondor"> Komondor</a>
+        </li>
+
+        <li>
+            <a id="mastifftibetan2" href="#mastifftibetan"> Korean Dosa Mastiff</a>
+        </li>
+
+        <li>
+            <a id="labradoodle" href="#labradoodle"> Labradoodle</a>
+        </li>
+
+        <li>
+            <a id="labrador" href="#labrador"> Labrador</a>
+        </li>
+
+        <li>
+            <a id="portughez3" href="#portughez"> Lagotto Romagnolo</a>
+        </li>
+
+        <li>
+            <a id="terranova2" href="#terranova"> Landseer</a>
+        </li>
+
+        <li>
+            <a id="saintberanard2" href="#saintberanard"> Leonberger</a>
+        </li>
+
+        <li>
+            <a id="cehoslovac1" href="#cehoslovac"> Lup Cehoslovac</a>
+        </li>
+
+        <li>
+            <a id="malamut1" href="#malamut"> Malamut de Alaska</a>
+        </li>
+
+        <li>
+            <a id="malionois" href="#malionois"> Malinois</a>
+        </li>
+
+        <li>
+            <a id="manchester" href="#manchester"> Manchester Terrier</a>
+        </li>
+
+        <li>
+            <a id="dogbordeaux2" href="#dogbordeaux"> Mastiff Danez</a>
+        </li>
+
+        <li>
+            <a id="napoletan3" href="#napoletan"> Mastiff de Pirinei</a>
+        </li>
+
+        <li>
+            <a id="bullmastiff2" href="#bullmastiff"> Mastiff Englez</a>
+        </li>
+
+        <li>
+            <a id="napoletan1" href="#napoletan"> Mastiff Napoletan</a>
+        </li>
+
+        <li>
+            <a id="napoletan2" href="#napoletan"> Mastiff Spaniol</a>
+        </li>
+
+        <li>
+            <a id="mastifftibetan1" href="#mastifftibetan"> Mastiff Tibetan</a>
+        </li>
+
+        <li>
+            <a id="metis" href="#metis"> Metis</a>
+        </li>
+
+        <li>
+            <a id="ogar7" href="#ogar"> Ogar</a>
+        </li>
+
+        <li>
+            <a id="ogar8" href="#ogar"> Ogar Afgan</a>
+        </li>
+
+        <li>
+            <a id="ogar9" href="#ogar"> Ogar de Ibiza</a>
+        </li>
+
+        <li>
+            <a id="ogar10" href="#ogar"> Ogar Maghiar</a>
+        </li>
+
+        <li>
+            <a id="ogar11" href="#ogar"> Ogar Spaniol</a>
+        </li>
+
+        <li>
+            <a id="parsonterrier" href="#parsonterrier"> Parson Russell Terrier</a>
+        </li>
+
+        <li>
+            <a id="spanieltibetan2" href="#spanieltibetan"> Pechinez</a>
+        </li>
+
+        <li>
+            <a id="chinezesccucreasta2" href="#chinezesccucreasta"> Perro sin pelo del Perú</a>
+        </li>
+
+        <li>
+            <a id="rhodesian5" href="#rhodesian"> Phu Quoc Ridgeback</a>
+        </li>
+
+        <li>
+            <a id="ogar12" href="#ogar"> Picollo Levriero Italiano</a>
+        </li>
+
+        <li>
+            <a id="chihuahua2" href="#chihuahua"> Pinscher</a>
+        </li>
+
+        <li>
+            <a id="pointer1" href="#pointer"> Pointer Englez</a>
+        </li>
+
+        <li>
+            <a id="pointer5" href="#pointer"> Pointer Portughez</a>
+        </li>
+
+        <li>
+            <a id="corgi1" href="#corgi"> Pombroke Welsh Corgi</a>
+        </li>
+
+        <li>
+            <a id="pomeranian" href="#pomeranian"> Pomeranian</a>
+        </li>
+
+        <li>
+            <a id="argentin2" href="#argentin"> Presa Canario</a>
+        </li>
+
+        <li>
+            <a id="pudel1" href="#pudel"> Pudel</a>
+        </li>
+
+        <li>
+            <a id="pug" href="#pug"> Pug</a>
+        </li>
+
+        <li>
+            <a id="bedlington2" href="#bedlington"> Pumi</a>
+        </li>
+
+        <li>
+            <a id="rhodesian3" href="#rhodesian"> Razorback Cambogian</a>
+        </li>
+
+        <li>
+            <a id="rhodesian1" href="#rhodesian"> Rhodesian Ridgeback</a>
+        </li>
+
+        <li>
+            <a id="rottweiler" href="#rottweiler"> Rottweiler</a>
+        </li>
+
+        <li>
+            <a id="saintberanard1" href="#saintberanard"> Saint-Bernard</a>
+        </li>
+
+        <li>
+            <a id="ogar13" href="#ogar"> Saluki</a>
+        </li>
+
+        <li>
+            <a id="samoyed" href="#samoyed"> Samoyed</a>
+        </li>
+
+        <li>
+            <a id="schnauzer" href="#schnauzer"> Schnauzer</a>
+        </li>
+
+        <li>
+            <a id="westwhite2" href="#westwhite"> Scottish Terrier</a>
+        </li>
+
+        <li>
+            <a id="setter1" href="#setter"> Setter Englez</a>
+        </li>
+
+        <li>
+            <a id="setter2" href="#setter"> Setter Irlandez</a>
+        </li>
+
+        <li>
+            <a id="setter3" href="#setter"> Setter Irlandez Rosu si Alb</a>
+        </li>
+
+        <li>
+            <a id="sharpei" href="#sharpei"> Shar Pei</a>
+        </li>
+
+        <li>
+            <a id="shiba1" href="#shiba"> Shiba Inu</a>
+        </li>
+
+        <li>
+            <a id="shihtzu1" href="#shihtzu"> Shih-Tzu</a>
+        </li>
+
+        <li>
+            <a id="shiba2" href="#shiba"> Shikoku Ken</a>
+        </li>
+
+        <li>
+            <a id="skye1" href="#skye"> Skye Terrier</a>
+        </li>
+
+        <li>
+            <a id="ogar14" href="#ogar"> Sloughi</a>
+        </li>
+
+        <li>
+            <a id="collie3" href="#collie"> Smooth Collie</a>
+        </li>
+
+        <li>
+            <a id="spanieltibetan1" href="#spanieltibetan"> Spaniel Tibetan</a>
+        </li>
+
+        <li>
+            <a id="pointer2" href="#pointer"> Spinone Italian</a>
+        </li>
+
+        <li>
+            <a id="cocker3" href="#cocker"> Springer Spaniel Englez</a>
+        </li>
+
+        <li>
+            <a id="amstaff2" href="#amstaff"> Staffordshire Bull Terrier</a>
+        </li>
+
+        <li>
+            <a id="keeshonden2" href="#keeshonden"> Swedish Lapphund</a>
+        </li>
+
+        <li>
+            <a id="malamut2" href="#malamut"> Tamaskan</a>
+        </li>
+
+        <li>
+            <a id="teckel" href="#teckel"> Teckel</a>
+        </li>
+
+        <li>
+            <a id="terranova1" href="#terranova"> Terra Nova</a>
+        </li>
+        <!--
+                    <li>
+                          <a id = "mastifftibetan1" href ="#terriertibetan"> Terrier Tibetan</a>
+                    </li>
+    -->
+        <li>
+            <a id="rhodesian4" href="#rhodesian"> Thai Ridgeback Dog</a>
+        </li>
+
+        <li>
+            <a id="bullmastiff3" href="#bullmastiff"> Tosa Inu</a>
+        </li>
+
+        <li>
+            <a id="vizsla1" href="#vizsla"> Vizsla</a>
+        </li>
+
+        <li>
+            <a id="weimaraner" href="#weimaraner"> Weimaraner</a>
+        </li>
+
+        <li>
+            <a id="welsh" href="#welsh"> Welsh Terrier</a>
+        </li>
+
+        <li>
+            <a id="westwhite1" href="#westwhite"> West Highland White Terrier</a>
+        </li>
+
+        <li>
+            <a id="ogar15" href="#ogar"> Whippet</a>
+        </li>
+
+        <li>
+            <a id="pointer3" href="#pointer"> Wirehaired Pointing Griffon Korthals</a>
+        </li>
+
+        <li>
+            <a id="xolo" href="#xolo"> Xoloitzcuintle</a>
+        </li>
+
+        <li>
+            <a id="yorkshire1" href="#yorkshire"> Yorkshire Terrier</a>
+        </li>
+
+    </ul>
+</div>
+</nav>
+
+<div class="vizitatori">
+    <div class="leftVizite">
+        <p id="count">21076767</p>
+    </div>
+    <p id="thanks">de persoane au vizitat acest site, va multumesc!</p>
+    <div class="center">
+        <div class="eye"></div>
+    </div>
+    <div class="rightVizite">
+    </div>
+</div>
+
+<script>
+    function English() {
+
+        document.getElementById("thanks").innerHTML = "of people have visited this site, thank you!"
+
+        document.getElementById("ogar8").innerHTML = "Afghan Greyhound";
+        document.getElementById("airedale1").innerHTML = "Airedale Terrier";
+        document.getElementById("akita1").innerHTML = "Akita Inu";
+        document.getElementById("malamut1").innerHTML = "Alaskan Malamute";
+        document.getElementById("akitaamerican1").innerHTML = "American Akita";
+        document.getElementById("buldog2").innerHTML = "American Bulldog";
+        document.getElementById("pitbull2").innerHTML = "American Bully";
+        document.getElementById("pitbull1").innerHTML = "American Pit Bull Terrier";
+        document.getElementById("amstaff1").innerHTML = "American Staffordshire Terrier";
+        document.getElementById("argentin1").innerHTML = "Argentine Dogo";
+        document.getElementById("cocker2").innerHTML = "Aristocrat Clumber Spaniel";
+        document.getElementById("cattle").innerHTML = "Australian Cattle Dog";
+        document.getElementById("australian").innerHTML = "Australian Shepherd";
+        document.getElementById("yorkshire2").innerHTML = "Australian Silky Terrier";
+        document.getElementById("ogar1").innerHTML = "Azawakh";
+        document.getElementById("ogar2").innerHTML = "Barzoi";
+        document.getElementById("bassetHoundul1").innerHTML = "Basset Hound";
+        document.getElementById("bloodhound3").innerHTML = "Bavarian Mountain Cop";
+        document.getElementById("beagle").innerHTML = "Beagle";
+        document.getElementById("beauceron1").innerHTML = "Beauceron";
+        document.getElementById("bedlington1").innerHTML = "Bedlington Terrier";
+        document.getElementById("belgian1").innerHTML = "Belgian Groenendael Shepherd";
+        document.getElementById("belgian2").innerHTML = "Belgian Shepherd of Tervuren";
+        document.getElementById("komondor2").innerHTML = "Bergamasco Shepherd";
+        document.getElementById("berna").innerHTML = "Bernese Mountain Dog";
+        document.getElementById("bolognez1").innerHTML = "Bichon Bolognese";
+        document.getElementById("frise").innerHTML = "Bichon Frise";
+        document.getElementById("shihtzu2").innerHTML = "Bichon Havanese";
+        document.getElementById("maltez").innerHTML = "Bichon Maltese";
+        document.getElementById("blackrussian").innerHTML = "Black Russian Terrier";
+        document.getElementById("bloodhound1").innerHTML = "Bloodhound";
+        document.getElementById("bobtail1").innerHTML = "Bobtail";
+        document.getElementById("corso2").innerHTML = "Boerboel";
+        document.getElementById("border").innerHTML = "Border Collie";
+        document.getElementById("borderTerrier").innerHTML = "Border Terrier";
+        document.getElementById("boxer").innerHTML = "Boxer";
+        document.getElementById("bullterrier").innerHTML = "Bull Terrier";
+        document.getElementById("bullmastiff1").innerHTML = "Bullmastiff";
+        document.getElementById("mastifftibetan3").innerHTML = "Bully Kutta";
+        document.getElementById("buldog3").innerHTML = "Ca de Bou";
+        document.getElementById("westwhite3").innerHTML = "Cairn Terrier";
+        document.getElementById("rhodesian3").innerHTML = "Cambodian Razorback";
+        document.getElementById("corso1").innerHTML = "Cane Corso";
+        document.getElementById("corgi2").innerHTML = "Cardigan Welsh Corgi";
+        document.getElementById("cavalier").innerHTML = "Cavalier King Charles Spaniel";
+        document.getElementById("skye2").innerHTML = "Cesky Terrier";
+        document.getElementById("ogar3").innerHTML = "Chart Polski";
+        document.getElementById("golden2").innerHTML = "Chesapeake Bay Retriever";
+        document.getElementById("chihuahua1").innerHTML = "Chihuahua";
+        document.getElementById("chinezesccucreasta1").innerHTML = "Chinese Crested Dog";
+        document.getElementById("chowchow").innerHTML = "Chow Chow";
+        document.getElementById("pudel3").innerHTML = "Cockapoo";
+        document.getElementById("collie1").innerHTML = "Collie";
+        document.getElementById("corgi").innerHTML = "Corgi";
+        document.getElementById("bolognez2").innerHTML = "Cotton de Tulear";
+        document.getElementById("terranova3").innerHTML = "Curly Coated Retriever";
+        document.getElementById("cehoslovac1").innerHTML = "Czechoslovakian Wolf";
+        document.getElementById("teckel").innerHTML = "Dachshund";
+        document.getElementById("dalmatian").innerHTML = "Dalmatian";
+        document.getElementById("dogbordeaux2").innerHTML = "Danish Mastiff";
+        document.getElementById("ogar4").innerHTML = "Deerhound";
+        document.getElementById("doggerman").innerHTML = "Deutsche Dogge";
+        document.getElementById("doberman").innerHTML = "Doberman Pinscher";
+        document.getElementById("dogbordeaux1").innerHTML = "Dogue de Bordeaux";
+        document.getElementById("pointer4").innerHTML = "Drahtaar";
+        document.getElementById("buldog1").innerHTML = "English Bulldog";
+        document.getElementById("cocker1").innerHTML = "English Cocker Spaniel";
+        document.getElementById("bullmastiff2").innerHTML = "English Mastiff";
+        document.getElementById("pointer1").innerHTML = "English Pointer";
+        document.getElementById("setter1").innerHTML = "English Setter";
+        document.getElementById("cocker3").innerHTML = "English Springer Spaniel";
+        document.getElementById("setter5").innerHTML = "Epagneul Breton";
+        document.getElementById("carpatin2").innerHTML = "Estrela Mountain Dog";
+        document.getElementById("napoletan4").innerHTML = "Fila Brasileiro";
+        document.getElementById("fox").innerHTML = "Fox Terrier";
+        document.getElementById("bulldogfrancez").innerHTML = "French Bulldog";
+        document.getElementById("vizsla2").innerHTML = "German Setter";
+        document.getElementById("bloodhound2").innerHTML = "German Sheperd Bloodhound";
+        document.getElementById("german1").innerHTML = "German Shepherd";
+        document.getElementById("golden1").innerHTML = "Golden Retriever";
+        document.getElementById("pudel2").innerHTML = "GoldenDoodle";
+        document.getElementById("setter4").innerHTML = "Gordon Setter";
+        document.getElementById("pirinei1").innerHTML = "Great Pyrenees";
+        document.getElementById("ogar5").innerHTML = "Greyhound";
+        document.getElementById("akita3").innerHTML = "Hockkaido-inu";
+        document.getElementById("ogar10").innerHTML = "Hungarian Greyhound";
+        document.getElementById("ogar9").innerHTML = "Ibiza Greyhound";
+        document.getElementById("setter2").innerHTML = "Irish Setter";
+        document.getElementById("irish1").innerHTML = "Irish Terrier";
+        document.getElementById("ogar6").innerHTML = "Irish Wolfhound";
+        document.getElementById("ogar12").innerHTML = "Italian Greyhound";
+        document.getElementById("vizsla3").innerHTML = "Italian Setter";
+        document.getElementById("jackrussel").innerHTML = "Jack Russell Terrier";
+        document.getElementById("akita4").innerHTML = "Kai Ken";
+        document.getElementById("keeshonden1").innerHTML = "Keeshonden";
+        document.getElementById("irish2").innerHTML = "Kerry Blue Terrier";
+        document.getElementById("akita2").innerHTML = "Kishu";
+        document.getElementById("rhodesian2").innerHTML = "Kombai";
+        document.getElementById("komondor1").innerHTML = "Komondor";
+        document.getElementById("mastifftibetan2").innerHTML = "Korean Dosa Mastiff";
+        document.getElementById("labradoodle").innerHTML = "Labradoodle";
+        document.getElementById("labrador").innerHTML = "Labrador";
+        document.getElementById("portughez3").innerHTML = "Lagotto Romagnolo";
+        document.getElementById("terranova2").innerHTML = "Landseer";
+        document.getElementById("saintberanard2").innerHTML = "Leonberger";
+        document.getElementById("bobtail2").innerHTML = "Lowland Polish Shepherd";
+        document.getElementById("malionois").innerHTML = "Malinois";
+        document.getElementById("manchester").innerHTML = "Manchester Terrier";
+        document.getElementById("napoletan3").innerHTML = "Mastiff of the Pyrenees";
+        document.getElementById("metis").innerHTML = "Metis";
+        document.getElementById("napoletan1").innerHTML = "Neapolitan Mastiff";
+        document.getElementById("cehoslovac2").innerHTML = "Norwegian Elkhound";
+        document.getElementById("parsonterrier").innerHTML = "Parson Russell Terrier";
+        document.getElementById("spanieltibetan2").innerHTML = "Pekingese";
+        document.getElementById("chinezesccucreasta2").innerHTML = "Perro sin pelo del Perú";
+        document.getElementById("rhodesian5").innerHTML = "Phu Quoc Ridgeback";
+        document.getElementById("chihuahua2").innerHTML = "Pinscher";
+        document.getElementById("corgi1").innerHTML = "Pombroke Welsh Corgi";
+        document.getElementById("pomeranian").innerHTML = "Pomeranian";
+        document.getElementById("pudel1").innerHTML = "Poodle";
+        document.getElementById("pointer5").innerHTML = "Portuguese Pointer";
+        document.getElementById("portughez1").innerHTML = "Portuguese Water Dog";
+        document.getElementById("argentin2").innerHTML = "Presa Canario";
+        document.getElementById("pug").innerHTML = "Pug";
+        document.getElementById("bedlington2").innerHTML = "Pumi";
+        document.getElementById("setter3").innerHTML = "Red and White Irish Setter";
+        document.getElementById("rhodesian1").innerHTML = "Rhodesian Ridgeback";
+        document.getElementById("bucovina").innerHTML = "Romanian Bucovina Sheperd";
+        document.getElementById("carpatin1").innerHTML = "Romanian Carpathian Shepherd";
+        document.getElementById("mioritic1").innerHTML = "Romanian Mioritic Shepherd";
+        document.getElementById("corb").innerHTML = "Romanian Raven Shepherd";
+        document.getElementById("rottweiler").innerHTML = "Rottweiler";
+        document.getElementById("saintberanard1").innerHTML = "Saint-Bernard";
+        document.getElementById("ogar13").innerHTML = "Saluki";
+        document.getElementById("samoyed").innerHTML = "Samoyed";
+        document.getElementById("schnauzer").innerHTML = "Schnauzer";
+        document.getElementById("westwhite2").innerHTML = "Scottish Terrier";
+        document.getElementById("sharpei").innerHTML = "Shar Pei";
+        document.getElementById("pirinei2").innerHTML = "Shepherd of Anatolian";
+        document.getElementById("beauceron2").innerHTML = "Shepherd of Lagorai";
+        document.getElementById("pirinei3").innerHTML = "Shepherd of Maremma Abruzzi";
+        document.getElementById("collie2").innerHTML = "Shetland Sheepdog";
+        document.getElementById("shiba1").innerHTML = "Shiba Inu";
+        document.getElementById("shihtzu1").innerHTML = "Shih-Tzu";
+        document.getElementById("shiba2").innerHTML = "Shikoku Ken";
+        document.getElementById("husky").innerHTML = "Siberian Husky";
+        document.getElementById("skye1").innerHTML = "Skye Terrier";
+        document.getElementById("ogar14").innerHTML = "Sloughi";
+        document.getElementById("collie3").innerHTML = "Smooth Collie";
+        document.getElementById("mioritic2").innerHTML = "Southern Russian Shepherd";
+        document.getElementById("ogar11").innerHTML = "Spanish Greyhound";
+        document.getElementById("napoletan2").innerHTML = "Spanish Mastiff";
+        document.getElementById("portughez2").innerHTML = "Spanish Water Dog";
+        document.getElementById("pointer2").innerHTML = "Spinone Italiano";
+        document.getElementById("amstaff2").innerHTML = "Staffordshire Bull Terrier";
+        document.getElementById("keeshonden2").innerHTML = "Swedish Lapphund";
+        document.getElementById("german2").innerHTML = "Swedish Vallhund Shepherd";
+        document.getElementById("belgian3").innerHTML = "Swiss White Shepherd";
+        document.getElementById("malamut2").innerHTML = "Tamaskan";
+        document.getElementById("terranova1").innerHTML = "Terra Nova";
+        document.getElementById("rhodesian4").innerHTML = "Thai Ridgeback Dog";
+        document.getElementById("mastifftibetan1").innerHTML = "Tibetan Mastiff";
+        document.getElementById("spanieltibetan1").innerHTML = "Tibetan Spaniel";
+        // document.getElementById("terriertibetan").innerHTML = "Tibetan Terrier";
+        document.getElementById("bullmastiff3").innerHTML = "Tosa Inu";
+        document.getElementById("bassetHoundul2").innerHTML = "Transylvanian Hound";
+        document.getElementById("vizsla1").innerHTML = "Vizsla";
+        document.getElementById("weimaraner").innerHTML = "Weimaraner";
+        document.getElementById("welsh").innerHTML = "Welsh Terrier";
+        document.getElementById("westwhite1").innerHTML = "West Highland White Terrier";
+        document.getElementById("pointer3").innerHTML = "Wirehaired Pointing Griffon Korthals";
+        document.getElementById("ogar15").innerHTML = "Whippet";
+        document.getElementById("xolo").innerHTML = "Xoloitzcuintle";
+        document.getElementById("yorkshire1").innerHTML = "Yorkshire Terrier";
+
+
+
+        limba = "en";
+    }
+    function Italian() {
+
+        document.getElementById("thanks").innerHTML = "persone hanno visitato questo sito, grazie!"
+
+        document.getElementById("airedale1").innerHTML = "Airedale Terrier";
+        document.getElementById("akitaamerican1").innerHTML = "Akita Americano";
+        document.getElementById("akita1").innerHTML = "Akita Inu";
+        document.getElementById("doggerman").innerHTML = "Alano";
+        document.getElementById("malamut1").innerHTML = "Alaskan Malamute";
+        document.getElementById("pitbull2").innerHTML = "American Bully";
+        document.getElementById("pitbull1").innerHTML = "American Pit Bull Terrier";
+        document.getElementById("amstaff1").innerHTML = "American Staffordshire Terrier";
+        document.getElementById("cocker2").innerHTML = "Aristocrat Clumber Spaniel";
+        document.getElementById("cattle").innerHTML = "Australian Cattle Dog";
+        document.getElementById("yorkshire2").innerHTML = "Australian Silky Terrier";
+        document.getElementById("ogar1").innerHTML = "Azawakh";
+        document.getElementById("pudel1").innerHTML = "Barboncino";
+        document.getElementById("ogar2").innerHTML = "Barzoi";
+        document.getElementById("bassetHoundul1").innerHTML = "Basset Hound";
+        document.getElementById("teckel").innerHTML = "Bassotto";
+        document.getElementById("beagle").innerHTML = "Beagle";
+        document.getElementById("beauceron1").innerHTML = "Beauceron";
+        document.getElementById("bedlington1").innerHTML = "Bedlington Terrier";
+        document.getElementById("bolognez1").innerHTML = "Bichon Bolognese";
+        document.getElementById("frise").innerHTML = "Bichon Frisé";
+        document.getElementById("shihtzu2").innerHTML = "Bichon Havanese";
+        document.getElementById("maltez").innerHTML = "Bichon Maltese";
+        document.getElementById("blackrussian").innerHTML = "Black Russian Terrier";
+        document.getElementById("bloodhound1").innerHTML = "Bloodhound";
+        document.getElementById("bobtail1").innerHTML = "Bobtail";
+        document.getElementById("corso2").innerHTML = "Boerboel";
+        document.getElementById("border").innerHTML = "Border Collie";
+        document.getElementById("borderTerrier").innerHTML = "Border Terrier";
+        document.getElementById("berna").innerHTML = "Bovaro del Bernese";
+        document.getElementById("boxer").innerHTML = "Boxer";
+        document.getElementById("vizsla3").innerHTML = "Bracco Italiano";
+        document.getElementById("vizsla2").innerHTML = "Bracco Tedesco";
+        document.getElementById("bullterrier").innerHTML = "Bull Terrier";
+        document.getElementById("buldog2").innerHTML = "Bulldog Americano";
+        document.getElementById("bulldogfrancez").innerHTML = "Bulldog Francese";
+        document.getElementById("buldog1").innerHTML = "Bulldog Inglese";
+        document.getElementById("bullmastiff1").innerHTML = "Bullmastiff";
+        document.getElementById("mastifftibetan3").innerHTML = "Bully Kutta";
+        document.getElementById("buldog3").innerHTML = "Ca de Bou";
+        document.getElementById("westwhite3").innerHTML = "Cairn Terrier";
+        document.getElementById("rhodesian3").innerHTML = "Cambodian Razorback";
+        document.getElementById("corso1").innerHTML = "Cane Corso";
+        document.getElementById("portughez1").innerHTML = "Cane d'acqua Portoghese";
+        document.getElementById("portughez2").innerHTML = "Cane d'acqua Spagnolo";
+        document.getElementById("pirinei1").innerHTML = "Cane da Montagna dei Pirenei";
+        document.getElementById("carpatin2").innerHTML = "Cane della Serra da Estrela";
+        document.getElementById("corgi2").innerHTML = "Cardigan Welsh Corgi";
+        document.getElementById("cavalier").innerHTML = "Cavalier King Charles Spaniel";
+        document.getElementById("skye2").innerHTML = "Cesky Terrier";
+        document.getElementById("ogar3").innerHTML = "Chart Polski";
+        document.getElementById("golden2").innerHTML = "Chesapeake Bay Retriever";
+        document.getElementById("chihuahua1").innerHTML = "Chihuahua";
+        document.getElementById("chinezesccucreasta1").innerHTML = "Chinese Crested Dog";
+        document.getElementById("chowchow").innerHTML = "Chow Chow";
+        document.getElementById("pudel3").innerHTML = "Cockapoo";
+        document.getElementById("cocker1").innerHTML = "Cocker Spaniel Inglese";
+        document.getElementById("collie1").innerHTML = "Collie";
+        document.getElementById("corgi").innerHTML = "Corgi";
+        document.getElementById("bolognez2").innerHTML = "Cotton de Tulear";
+        document.getElementById("terranova3").innerHTML = "Curly Coated Retriever";
+        document.getElementById("dalmatian").innerHTML = "Dalmata";
+        document.getElementById("ogar4").innerHTML = "Deerhound";
+        document.getElementById("doberman").innerHTML = "Doberman Pinscher";
+        document.getElementById("argentin1").innerHTML = "Dogo Argentino";
+        document.getElementById("dogbordeaux1").innerHTML = "Dogue de Bordeaux";
+        document.getElementById("pointer4").innerHTML = "Drahtaar";
+        document.getElementById("setter5").innerHTML = "Épagneul Breton";
+        document.getElementById("napoletan4").innerHTML = "Fila Brasileiro";
+        document.getElementById("fox").innerHTML = "Fox Terrier";
+        document.getElementById("bloodhound2").innerHTML = "German Sheperd Bloodhound";
+        document.getElementById("golden1").innerHTML = "Golden Retriever";
+        document.getElementById("pudel2").innerHTML = "GoldenDoodle";
+        document.getElementById("setter4").innerHTML = "Gordon Setter";
+        document.getElementById("ogar5").innerHTML = "Greyhound";
+        document.getElementById("akita3").innerHTML = "Hockkaido-inu";
+        document.getElementById("ogar9").innerHTML = "Ibiza Greyhound";
+        document.getElementById("irish1").innerHTML = "Irish Terrier";
+        document.getElementById("ogar6").innerHTML = "Irish Wolfhound";
+        document.getElementById("jackrussel").innerHTML = "Jack Russell Terrier";
+        document.getElementById("akita4").innerHTML = "Kai Ken";
+        document.getElementById("keeshonden1").innerHTML = "Keeshonden";
+        document.getElementById("irish2").innerHTML = "Kerry Blue Terrier";
+        document.getElementById("akita2").innerHTML = "Kishu";
+        document.getElementById("rhodesian2").innerHTML = "Kombai";
+        document.getElementById("komondor1").innerHTML = "Komondor";
+        document.getElementById("labradoodle").innerHTML = "Labradoodle";
+        document.getElementById("labrador").innerHTML = "Labrador";
+        document.getElementById("portughez3").innerHTML = "Lagotto Romagnolo";
+        document.getElementById("terranova2").innerHTML = "Landseer";
+        document.getElementById("keeshonden2").innerHTML = "Lapphund Svedese";
+        document.getElementById("saintberanard2").innerHTML = "Leonberger";
+        document.getElementById("ogar8").innerHTML = "Levriero Afgano";
+        document.getElementById("ogar10").innerHTML = "Levriero Ungherese";
+        document.getElementById("ogar7").innerHTML = "Levriero";
+        document.getElementById("cehoslovac1").innerHTML = "Lupo Cecoslovacco";
+        document.getElementById("malionois").innerHTML = "Malinois";
+        document.getElementById("manchester").innerHTML = "Manchester Terrier";
+        document.getElementById("dogbordeaux2").innerHTML = "Mastiff Danese";
+        document.getElementById("napoletan3").innerHTML = "Mastiff dei Pirenei";
+        document.getElementById("mastifftibetan2").innerHTML = "Mastiff Dosa Koreano";
+        document.getElementById("bullmastiff2").innerHTML = "Mastiff Inglese";
+        document.getElementById("napoletan1").innerHTML = "Mastiff Napoletano";
+        document.getElementById("napoletan2").innerHTML = "Mastiff Spagnolo";
+        document.getElementById("mastifftibetan1").innerHTML = "Mastiff Tibetano";
+        document.getElementById("metis").innerHTML = "Meticcio";
+        document.getElementById("cehoslovac2").innerHTML = "Norwegian Elkhound";
+        document.getElementById("parsonterrier").innerHTML = "Parson Russell Terrier";
+        document.getElementById("australian").innerHTML = "Pastore Australiano";
+        document.getElementById("belgian2").innerHTML = "Pastore Belga di Tervuren";
+        document.getElementById("belgian1").innerHTML = "Pastore Belga Groenendael";
+        document.getElementById("komondor2").innerHTML = "Pastore Bergamasco";
+        document.getElementById("belgian3").innerHTML = "Pastore Bianco Svizzero";
+        document.getElementById("beauceron2").innerHTML = "Pastore del Lagorai";
+        document.getElementById("pirinei2").innerHTML = "Pastore dell'Anatolia";
+        document.getElementById("mioritic2").innerHTML = "Pastore della Russia Meridionale";
+        document.getElementById("pirinei3").innerHTML = "Pastore Maremmano Abruzzese";
+        document.getElementById("bobtail2").innerHTML = "Pastore Polacco di Vallée";
+        document.getElementById("corb").innerHTML = "Pastore Rumeno Corvo";
+        document.getElementById("carpatin1").innerHTML = "Pastore Rumeno dei Carpazi";
+        document.getElementById("bucovina").innerHTML = "Pastore Rumeno di Bucovina";
+        document.getElementById("mioritic1").innerHTML = "Pastore Rumeno Mioritico";
+        document.getElementById("collie2").innerHTML = "Pastore Scozzese Shetland";
+        document.getElementById("german2").innerHTML = "Pastore Vallhund Svedese";
+        document.getElementById("german1").innerHTML = "Pastore Tedesco";
+        document.getElementById("spanieltibetan2").innerHTML = "Pechinese";
+        document.getElementById("chinezesccucreasta2").innerHTML = "Perro sin pelo del Perú";
+        document.getElementById("rhodesian5").innerHTML = "Phu Quoc Ridgeback";
+        document.getElementById("ogar12").innerHTML = "Picollo Levriero Italiano";
+        document.getElementById("chihuahua2").innerHTML = "Pinscher";
+        document.getElementById("pointer1").innerHTML = "Pointer Inglese";
+        document.getElementById("pointer5").innerHTML = "Pointer Portoghese";
+        document.getElementById("corgi1").innerHTML = "Pombroke Welsh Corgi";
+        document.getElementById("pomeranian").innerHTML = "Pomerania";
+        document.getElementById("argentin2").innerHTML = "Presa Canario";
+        document.getElementById("pug").innerHTML = "Pug";
+        document.getElementById("bedlington2").innerHTML = "Pumi";
+        document.getElementById("rhodesian1").innerHTML = "Rhodesian Ridgeback";
+        document.getElementById("rottweiler").innerHTML = "Rottweiler";
+        document.getElementById("ogar13").innerHTML = "Saluki";
+        document.getElementById("samoyed").innerHTML = "Samoiedo";
+        document.getElementById("saintberanard1").innerHTML = "San Bernardo";
+        document.getElementById("schnauzer").innerHTML = "Schnauzer";
+        document.getElementById("westwhite2").innerHTML = "Scottish Terrier";
+        document.getElementById("bloodhound3").innerHTML = "Segugio Bavarese da Montagna";
+        document.getElementById("bassetHoundul2").innerHTML = "Segugio della Transilvania";
+        document.getElementById("setter1").innerHTML = "Setter Inglese";
+        document.getElementById("setter3").innerHTML = "Setter Irlandese Rosso e Bianco";
+        document.getElementById("setter2").innerHTML = "Setter Irlandese";
+        document.getElementById("sharpei").innerHTML = "Shar Pei";
+        document.getElementById("shiba1").innerHTML = "Shiba Inu";
+        document.getElementById("shihtzu1").innerHTML = "Shih-Tzu";
+        document.getElementById("shiba2").innerHTML = "Shikoku Ken";
+        document.getElementById("husky").innerHTML = "Siberian Husky";
+        document.getElementById("skye1").innerHTML = "Skye Terrier";
+        document.getElementById("ogar14").innerHTML = "Sloughi";
+        document.getElementById("collie3").innerHTML = "Smooth Collie";
+        document.getElementById("ogar11").innerHTML = "Spanish Greyhound";
+        document.getElementById("pointer2").innerHTML = "Spinone Italiano";
+        document.getElementById("cocker3").innerHTML = "Springer Spaniel Inglese";
+        document.getElementById("amstaff2").innerHTML = "Staffordshire Bull Terrier";
+        document.getElementById("malamut2").innerHTML = "Tamaskan";
+        document.getElementById("terranova1").innerHTML = "Terra Nova";
+        // document.getElementById("terriertibetan").innerHTML = "Terrier Tibetano";
+        document.getElementById("rhodesian4").innerHTML = "Thai Ridgeback Dog";
+        document.getElementById("spanieltibetan1").innerHTML = "Tibetan Spaniel";
+        document.getElementById("bullmastiff3").innerHTML = "Tosa Inu";
+        document.getElementById("vizsla1").innerHTML = "Vizsla";
+        document.getElementById("weimaraner").innerHTML = "Weimaraner";
+        document.getElementById("welsh").innerHTML = "Welsh Terrier";
+        document.getElementById("westwhite1").innerHTML = "West Highland White Terrier";
+        document.getElementById("pointer3").innerHTML = "Wirehaired Pointing Griffon Korthals";
+        document.getElementById("ogar15").innerHTML = "Whippet";
+        document.getElementById("xolo").innerHTML = "Xoloitzcuintle";
+        document.getElementById("yorkshire1").innerHTML = "Yorkshire Terrier";
+
+
+
+
+        limba = "it";
+    }
+    function French() {
+
+        document.getElementById("thanks").innerHTML = "personnes ont visité ce site, merci!"
+
+        document.getElementById("airedale1").innerHTML = "Airedale Terrier";
+        document.getElementById("akitaamerican1").innerHTML = "Akita Américain";
+        document.getElementById("akita1").innerHTML = "Akita Inu";
+        document.getElementById("buldog2").innerHTML = "American Bulldog";
+        document.getElementById("pitbull2").innerHTML = "American Bully";
+        document.getElementById("pitbull1").innerHTML = "American Pit Bull Terrier";
+        document.getElementById("amstaff1").innerHTML = "American Staffordshire Terrier";
+        document.getElementById("cocker2").innerHTML = "Aristocrat Clumber Spaniel";
+        document.getElementById("cattle").innerHTML = "Australian Cattle Dog";
+        document.getElementById("yorkshire2").innerHTML = "Australian Silky Terrier";
+        document.getElementById("ogar1").innerHTML = "Azawakh";
+        document.getElementById("ogar2").innerHTML = "Barzoi";
+        document.getElementById("bassetHoundul1").innerHTML = "Basset Hound";
+        document.getElementById("bloodhound3").innerHTML = "Bavarian Mountain Hound";
+        document.getElementById("beagle").innerHTML = "Beagle";
+        document.getElementById("beauceron1").innerHTML = "Beauceron";
+        document.getElementById("bedlington1").innerHTML = "Bedlington Terrier";
+        document.getElementById("german1").innerHTML = "Berger Allemand";
+        document.getElementById("australian").innerHTML = "Berger Australien";
+        document.getElementById("belgian2").innerHTML = "Berger Belge de Tervuren";
+        document.getElementById("belgian1").innerHTML = "Berger Belge Groenendael";
+        document.getElementById("belgian3").innerHTML = "Berger Blanc Suisse";
+        document.getElementById("pirinei2").innerHTML = "Berger d'Anatolie";
+        document.getElementById("komondor2").innerHTML = "Berger de Bergame";
+        document.getElementById("beauceron2").innerHTML = "Berger de Lagorai";
+        document.getElementById("pirinei3").innerHTML = "Berger de Maremme et Abruzzes";
+        document.getElementById("mioritic2").innerHTML = "Berger de Russie Méridionale";
+        document.getElementById("collie2").innerHTML = "Berger des Shetland";
+        document.getElementById("bobtail2").innerHTML = "Berger Polonais des Plaines";
+        document.getElementById("corb").innerHTML = "Berger Roumain Corbeau";
+        document.getElementById("bucovina").innerHTML = "Berger Roumain de Bucovine";
+        document.getElementById("carpatin1").innerHTML = "Berger Roumain des Carpates";
+        document.getElementById("mioritic1").innerHTML = "Berger Roumain Mioritic";
+        document.getElementById("german2").innerHTML = "Berger Vallhund Suédois";
+        document.getElementById("bolognez1").innerHTML = "Bichon Bolonais";
+        document.getElementById("frise").innerHTML = "Bichon Frisé";
+        document.getElementById("shihtzu2").innerHTML = "Bichon Havanais";
+        document.getElementById("maltez").innerHTML = "Bichon Maltais";
+        document.getElementById("blackrussian").innerHTML = "Black Russian Terrier";
+        document.getElementById("bloodhound1").innerHTML = "Bloodhound";
+        document.getElementById("bobtail1").innerHTML = "Bobtail";
+        document.getElementById("corso2").innerHTML = "Boerboel";
+        document.getElementById("border").innerHTML = "Border Collie";
+        document.getElementById("borderTerrier").innerHTML = "Border Terrier";
+        document.getElementById("buldog1").innerHTML = "Bouledogue Anglais";
+        document.getElementById("bulldogfrancez").innerHTML = "Bouledogue Français";
+        document.getElementById("berna").innerHTML = "Bouvier Bernois";
+        document.getElementById("boxer").innerHTML = "Boxer";
+        document.getElementById("vizsla2").innerHTML = "Braque Allemand";
+        document.getElementById("vizsla3").innerHTML = "Braque Italien";
+        document.getElementById("pointer5").innerHTML = "Braque Portugais";
+        document.getElementById("bullterrier").innerHTML = "Bull Terrier";
+        document.getElementById("bullmastiff1").innerHTML = "Bullmastiff";
+        document.getElementById("mastifftibetan3").innerHTML = "Bully Kutta";
+        document.getElementById("buldog3").innerHTML = "Ca de Bou";
+        document.getElementById("westwhite3").innerHTML = "Cairn Terrier";
+        document.getElementById("rhodesian3").innerHTML = "Cambodgien Razorback";
+        document.getElementById("corso1").innerHTML = "Cane Corso";
+        document.getElementById("pudel1").innerHTML = "Caniche";
+        document.getElementById("corgi2").innerHTML = "Cardigan Welsh Corgi";
+        document.getElementById("cavalier").innerHTML = "Cavalier King Charles Spaniel";
+        document.getElementById("skye2").innerHTML = "Cesky Terrier";
+        document.getElementById("ogar3").innerHTML = "Chart Polski";
+        document.getElementById("golden2").innerHTML = "Chesapeake Bay Retriever";
+        document.getElementById("chinezesccucreasta1").innerHTML = "Chien Chinois à Crête";
+        document.getElementById("bassetHoundul2").innerHTML = "Chien Courant de Transylvanian";
+        document.getElementById("portughez2").innerHTML = "Chien d'eau Espagnol";
+        document.getElementById("portughez1").innerHTML = "Chien d'Eau Portugais";
+        document.getElementById("carpatin2").innerHTML = "Chien de la Serra da Estrela";
+        document.getElementById("pirinei1").innerHTML = "Chien de Montagne des Pyrénées";
+        document.getElementById("chihuahua1").innerHTML = "Chihuahua";
+        document.getElementById("chowchow").innerHTML = "Chow Chow";
+        document.getElementById("pudel3").innerHTML = "Cockapoo";
+        document.getElementById("cocker1").innerHTML = "Cocker Spaniel Anglais";
+        document.getElementById("collie1").innerHTML = "Collie";
+        document.getElementById("corgi").innerHTML = "Corgi";
+        document.getElementById("bolognez2").innerHTML = "Coton de Tuléar";
+        document.getElementById("terranova3").innerHTML = "Curly Coated Retriever";
+        document.getElementById("dalmatian").innerHTML = "Dalmatien";
+        document.getElementById("ogar4").innerHTML = "Deerhound";
+        document.getElementById("doberman").innerHTML = "Doberman Pinscher";
+        document.getElementById("doggerman").innerHTML = "Dogue Allemand";
+        document.getElementById("argentin1").innerHTML = "Dogue Argentin";
+        document.getElementById("dogbordeaux1").innerHTML = "Dogue de Bordeaux";
+        document.getElementById("mastifftibetan1").innerHTML = "Dogue du Tibet";
+        document.getElementById("mastifftibetan2").innerHTML = "Dosa Mastiff Coréen";
+        document.getElementById("pointer4").innerHTML = "Drahtaar";
+        document.getElementById("cehoslovac2").innerHTML = "Elkhound Norvégien";
+        document.getElementById("setter5").innerHTML = "Épagneul Breton";
+        document.getElementById("spanieltibetan1").innerHTML = "Épagneul Tibétain";
+        document.getElementById("napoletan4").innerHTML = "Fila Brasileiro";
+        document.getElementById("fox").innerHTML = "Fox Terrier";
+        document.getElementById("bloodhound2").innerHTML = "German Sheperd Bloodhound";
+        document.getElementById("golden1").innerHTML = "Golden Retriever";
+        document.getElementById("pudel2").innerHTML = "GoldenDoodle";
+        document.getElementById("ogar5").innerHTML = "Greyhound";
+        document.getElementById("pointer3").innerHTML = "Griffon d'arrêt à Poil dur Korthals";
+        document.getElementById("akita3").innerHTML = "Hockkaido-inu";
+        document.getElementById("ogar9").innerHTML = "Ibiza Greyhound";
+        document.getElementById("irish1").innerHTML = "Irish Terrier";
+        document.getElementById("ogar6").innerHTML = "Irish Wolfhound";
+        document.getElementById("jackrussel").innerHTML = "Jack Russell Terrier";
+        document.getElementById("akita4").innerHTML = "Kai Ken";
+        document.getElementById("keeshonden1").innerHTML = "Keeshonden";
+        document.getElementById("irish2").innerHTML = "Kerry Blue Terrier";
+        document.getElementById("akita2").innerHTML = "Kishu";
+        document.getElementById("rhodesian2").innerHTML = "Kombai";
+        document.getElementById("komondor1").innerHTML = "Komondor";
+        document.getElementById("labradoodle").innerHTML = "Labradoodle";
+        document.getElementById("labrador").innerHTML = "Labrador";
+        document.getElementById("portughez3").innerHTML = "Lagotto Romagnolo";
+        document.getElementById("terranova2").innerHTML = "Landseer";
+        document.getElementById("keeshonden2").innerHTML = "Lapphund Suédois";
+        document.getElementById("saintberanard2").innerHTML = "Léonberg";
+        document.getElementById("ogar8").innerHTML = "Lévrier Afghan";
+        document.getElementById("ogar10").innerHTML = "Lévrier Hongrois";
+        document.getElementById("ogar7").innerHTML = "Lévrier";
+        document.getElementById("cehoslovac1").innerHTML = "Loup Tchécoslovaque";
+        document.getElementById("malamut1").innerHTML = "Malamut de l'Alaska";
+        document.getElementById("malionois").innerHTML = "Malinois";
+        document.getElementById("manchester").innerHTML = "Manchester Terrier";
+        document.getElementById("bullmastiff2").innerHTML = "Mastiff Anglais";
+        document.getElementById("dogbordeaux2").innerHTML = "Mastiff Danois";
+        document.getElementById("napoletan3").innerHTML = "Mastiff du Pirinei";
+        document.getElementById("napoletan2").innerHTML = "Mastiff Espagnol";
+        document.getElementById("napoletan1").innerHTML = "Mastiff Napoletano";
+        document.getElementById("metis").innerHTML = "Métis";
+        document.getElementById("parsonterrier").innerHTML = "Parson Russell Terrier";
+        document.getElementById("spanieltibetan2").innerHTML = "Pékinois";
+        document.getElementById("chinezesccucreasta2").innerHTML = "Perro sin pelo del Perú";
+        document.getElementById("rhodesian5").innerHTML = "Phu Quoc Ridgeback";
+        document.getElementById("ogar12").innerHTML = "Picollo Levriero Italiano";
+        document.getElementById("chihuahua2").innerHTML = "Pinscher";
+        document.getElementById("pointer1").innerHTML = "Pointeur Anglais";
+        document.getElementById("corgi1").innerHTML = "Pombroke Welsh Corgi";
+        document.getElementById("pomeranian").innerHTML = "Poméranien";
+        document.getElementById("argentin2").innerHTML = "Presa Canario";
+        document.getElementById("pug").innerHTML = "Pug";
+        document.getElementById("bedlington2").innerHTML = "Pumi";
+        document.getElementById("rhodesian1").innerHTML = "Rhodesian Ridgeback";
+        document.getElementById("rottweiler").innerHTML = "Rottweiler";
+        document.getElementById("saintberanard1").innerHTML = "Saint-Bernard";
+        document.getElementById("ogar13").innerHTML = "Saluki";
+        document.getElementById("samoyed").innerHTML = "Samoyède";
+        document.getElementById("schnauzer").innerHTML = "Schnauzer";
+        document.getElementById("westwhite2").innerHTML = "Scottish Terrier";
+        document.getElementById("setter1").innerHTML = "Setter Anglais";
+        document.getElementById("setter4").innerHTML = "Setter Gordon";
+        document.getElementById("setter3").innerHTML = "Setter Irlandais Rouge et Blanc";
+        document.getElementById("setter2").innerHTML = "Setter Irlandais";
+        document.getElementById("sharpei").innerHTML = "Shar Pei";
+        document.getElementById("shiba1").innerHTML = "Shiba Inu";
+        document.getElementById("shihtzu1").innerHTML = "Shih-Tzu";
+        document.getElementById("shiba2").innerHTML = "Shikoku Ken";
+        document.getElementById("husky").innerHTML = "Siberian Husky";
+        document.getElementById("skye1").innerHTML = "Skye Terrier";
+        document.getElementById("ogar14").innerHTML = "Sloughi";
+        document.getElementById("collie3").innerHTML = "Smooth Collie";
+        document.getElementById("ogar11").innerHTML = "Spanish Greyhound";
+        document.getElementById("pointer2").innerHTML = "Spinone Italien";
+        document.getElementById("cocker3").innerHTML = "Springer Spaniel Anglais";
+        document.getElementById("amstaff2").innerHTML = "Staffordshire Bull Terrier";
+        document.getElementById("malamut2").innerHTML = "Tamaskan";
+        document.getElementById("teckel").innerHTML = "Teckel";
+        document.getElementById("terranova1").innerHTML = "Terre-Neuve";
+        //  document.getElementById("terriertibetan1").innerHTML = "Terrier Tibétain";
+        document.getElementById("rhodesian4").innerHTML = "Thai Ridgeback Dog";
+        document.getElementById("bullmastiff3").innerHTML = "Tosa Inu";
+        document.getElementById("vizsla1").innerHTML = "Vizsla";
+        document.getElementById("weimaraner").innerHTML = "Weimaraner";
+        document.getElementById("welsh").innerHTML = "Welsh Terrier";
+        document.getElementById("westwhite1").innerHTML = "West Highland White Terrier";
+        document.getElementById("ogar15").innerHTML = "Whippet";
+        document.getElementById("xolo").innerHTML = "Xoloitzcuintle";
+        document.getElementById("yorkshire1").innerHTML = "Yorkshire Terrier";
+
+        limba = "fr";
+    }
+    function German() {
+
+        document.getElementById("thanks").innerHTML = "Personen haben diese Seite besucht, vielen Dank!"
+
+        document.getElementById("ogar8").innerHTML = "Afghanischer Windhund";
+        document.getElementById("airedale1").innerHTML = "Airedale Terrier";
+        document.getElementById("akita1").innerHTML = "Akita Inu";
+        document.getElementById("malamut1").innerHTML = "Alaskan Malamute";
+        document.getElementById("akitaamerican1").innerHTML = "American Akita";
+        document.getElementById("buldog2").innerHTML = "American Bulldog";
+        document.getElementById("pitbull2").innerHTML = "American Bully";
+        document.getElementById("pitbull1").innerHTML = "American Pit Bull Terrier";
+        document.getElementById("amstaff1").innerHTML = "American Staffordshire Terrier";
+        document.getElementById("pirinei2").innerHTML = "Anatolischer Hirtenhund";
+        document.getElementById("cocker2").innerHTML = "Aristocrat Clumber Spaniel";
+        document.getElementById("cattle").innerHTML = "Australian Cattle Dog";
+        document.getElementById("australian").innerHTML = "Australian Shepherd";
+        document.getElementById("yorkshire2").innerHTML = "Australian Silky Terrier";
+        document.getElementById("ogar1").innerHTML = "Azawakh";
+        document.getElementById("ogar2").innerHTML = "Barzoi";
+        document.getElementById("bassetHoundul1").innerHTML = "Basset Hound";
+        document.getElementById("bloodhound3").innerHTML = "Bayerische Berg Cop";
+        document.getElementById("beagle").innerHTML = "Beagle";
+        document.getElementById("beauceron1").innerHTML = "Beauceron";
+        document.getElementById("bedlington1").innerHTML = "Bedlington Terrier";
+        document.getElementById("belgian1").innerHTML = "Belgischer Groenendael Shepherd";
+        document.getElementById("belgian2").innerHTML = "Belgischer Schäferhund von Tervuren";
+        document.getElementById("komondor2").innerHTML = "Bergamasker Hiterhund";
+        document.getElementById("berna").innerHTML = "Berner Schäferhund";
+        document.getElementById("saintberanard1").innerHTML = "Bernhardiner";
+        document.getElementById("bolognez1").innerHTML = "Bichon Bolognese";
+        document.getElementById("frise").innerHTML = "Bichon Frisé";
+        document.getElementById("shihtzu2").innerHTML = "Bichon Havaneser";
+        document.getElementById("maltez").innerHTML = "Bichon Malteser";
+        document.getElementById("blackrussian").innerHTML = "Black Russian Terrier";
+        document.getElementById("bloodhound1").innerHTML = "Bloodhound";
+        document.getElementById("bobtail1").innerHTML = "Bobtail";
+        document.getElementById("corso2").innerHTML = "Boerboel";
+        document.getElementById("border").innerHTML = "Border Collie";
+        document.getElementById("borderTerrier").innerHTML = "Border Terrier";
+        document.getElementById("boxer").innerHTML = "Boxer";
+        document.getElementById("bullterrier").innerHTML = "Bull Terrier";
+        document.getElementById("bullmastiff1").innerHTML = "Bullmastiff";
+        document.getElementById("mastifftibetan3").innerHTML = "Bully Kutta";
+        document.getElementById("buldog3").innerHTML = "Ca de Bou";
+        document.getElementById("westwhite3").innerHTML = "Cairn Terrier";
+        document.getElementById("rhodesian3").innerHTML = "Cambodian Razorback";
+        document.getElementById("corso1").innerHTML = "Cane Corso";
+        document.getElementById("corgi2").innerHTML = "Cardigan Welsh Corgi";
+        document.getElementById("cavalier").innerHTML = "Cavalier King Charles Spaniel";
+        document.getElementById("skye2").innerHTML = "Cesky Terrier";
+        document.getElementById("ogar3").innerHTML = "Chart Polski";
+        document.getElementById("golden2").innerHTML = "Chesapeake Bay Retriever";
+        document.getElementById("chihuahua1").innerHTML = "Chihuahua";
+        document.getElementById("chinezesccucreasta1").innerHTML = "Chinese Crested Dog";
+        document.getElementById("chowchow").innerHTML = "Chow Chow";
+        document.getElementById("pudel3").innerHTML = "Cockapoo";
+        document.getElementById("collie1").innerHTML = "Collie";
+        document.getElementById("corgi").innerHTML = "Corgi";
+        document.getElementById("bolognez2").innerHTML = "Coton de Tuléar";
+        document.getElementById("terranova3").innerHTML = "Curly Coated Retriever";
+        document.getElementById("teckel").innerHTML = "Dackel";
+        document.getElementById("dalmatian").innerHTML = "Dalmatiner";
+        document.getElementById("dogbordeaux2").innerHTML = "Dänischer Mastiff";
+        document.getElementById("ogar4").innerHTML = "Deerhound";
+        document.getElementById("vizsla2").innerHTML = "Deutsch Kurzhaar";
+        document.getElementById("doggerman").innerHTML = "Deutsche Dogge";
+        document.getElementById("german1").innerHTML = "Deutscher Schäferhund";
+        document.getElementById("doberman").innerHTML = "Doberman Pinscher";
+        document.getElementById("argentin1").innerHTML = "Dogo Argentino";
+        document.getElementById("dogbordeaux1").innerHTML = "Dogue de Bordeaux";
+        document.getElementById("pointer4").innerHTML = "Drahtaar";
+        document.getElementById("buldog1").innerHTML = "Englische Bulldogge";
+        document.getElementById("bullmastiff2").innerHTML = "Englischen Mastiff";
+        document.getElementById("cocker1").innerHTML = "English Cocker Spaniel";
+        document.getElementById("pointer1").innerHTML = "English Pointer";
+        document.getElementById("setter1").innerHTML = "English Setter";
+        document.getElementById("cocker3").innerHTML = "English Springer Spaniel";
+        document.getElementById("setter5").innerHTML = "Épagneul Breton";
+        document.getElementById("napoletan4").innerHTML = "Fila Brasileiro";
+        document.getElementById("fox").innerHTML = "Fox Terrier";
+        document.getElementById("bulldogfrancez").innerHTML = "Französische Bulldogge";
+        document.getElementById("bloodhound2").innerHTML = "German Sheperd Bloodhound";
+        document.getElementById("golden1").innerHTML = "Golden Retriever";
+        document.getElementById("pudel2").innerHTML = "GoldenDoodle";
+        document.getElementById("setter4").innerHTML = "Gordon Setter";
+        document.getElementById("ogar5").innerHTML = "Greyhound";
+        document.getElementById("akita3").innerHTML = "Hockkaido-inu";
+        document.getElementById("ogar9").innerHTML = "Ibiza Windhund";
+        document.getElementById("setter2").innerHTML = "Irish Setter";
+        document.getElementById("irish1").innerHTML = "Irish Terrier";
+        document.getElementById("ogar6").innerHTML = "Irish Wolfhound";
+        document.getElementById("vizsla3").innerHTML = "Italienische Bracke";
+        document.getElementById("jackrussel").innerHTML = "Jack Russell Terrier";
+        document.getElementById("akita4").innerHTML = "Kai Ken";
+        document.getElementById("keeshonden1").innerHTML = "Keeshonden";
+        document.getElementById("irish2").innerHTML = "Kerry Blue Terrier";
+        document.getElementById("akita2").innerHTML = "Kishu";
+        document.getElementById("rhodesian2").innerHTML = "Kombai";
+        document.getElementById("komondor1").innerHTML = "Komondor";
+        document.getElementById("mastifftibetan2").innerHTML = "Koreanischer Dosa-Mastiff";
+        document.getElementById("labradoodle").innerHTML = "Labradoodle";
+        document.getElementById("labrador").innerHTML = "Labrador";
+        document.getElementById("portughez3").innerHTML = "Lagotto Romagnolo";
+        document.getElementById("terranova2").innerHTML = "Landseer";
+        document.getElementById("saintberanard2").innerHTML = "Leonberger";
+        document.getElementById("malionois").innerHTML = "Malinois";
+        document.getElementById("manchester").innerHTML = "Manchester Terrier";
+        document.getElementById("pirinei3").innerHTML = "Maremmen Abruzzen Schäferhund";
+        document.getElementById("napoletan1").innerHTML = "Mastiff Napoletano";
+        document.getElementById("metis").innerHTML = "Mestizen";
+        document.getElementById("cehoslovac2").innerHTML = "Norwegische Elchhund";
+        document.getElementById("parsonterrier").innerHTML = "Parson Russell Terrier";
+        document.getElementById("spanieltibetan2").innerHTML = "Pekinese";
+        document.getElementById("chinezesccucreasta2").innerHTML = "Perro sin pelo del Perú";
+        document.getElementById("rhodesian5").innerHTML = "Phu Quoc Ridgeback";
+        document.getElementById("ogar12").innerHTML = "Picollo Levriero Italiano";
+        document.getElementById("chihuahua2").innerHTML = "Pinscher";
+        document.getElementById("corgi1").innerHTML = "Pombroke Welsh Corgi";
+        document.getElementById("pomeranian").innerHTML = "Pomeranian";
+        document.getElementById("pointer5").innerHTML = "Portugiesischer Pointer";
+        document.getElementById("portughez1").innerHTML = "Portugiesischer Wasserhund";
+        document.getElementById("argentin2").innerHTML = "Presa Canario";
+        document.getElementById("pudel1").innerHTML = "Pudel";
+        document.getElementById("pug").innerHTML = "Pug";
+        document.getElementById("bedlington2").innerHTML = "Pumi";
+        document.getElementById("napoletan3").innerHTML = "Pyrenäen Mastiff";
+        document.getElementById("pirinei1").innerHTML = "Pyrenäenbergerhund";
+        document.getElementById("setter3").innerHTML = "Red and White Irish Setter";
+        document.getElementById("rhodesian1").innerHTML = "Rhodesian Ridgeback";
+        document.getElementById("rottweiler").innerHTML = "Rottweiler";
+        document.getElementById("bucovina").innerHTML = "Rumänischer Hirtenhund der Bukowina";
+        document.getElementById("mioritic1").innerHTML = "Rumänischer Mioritischer Schäferhund";
+        document.getElementById("corb").innerHTML = "Rumänischer Rabenhirtenhund";
+        document.getElementById("carpatin1").innerHTML = "Rumänischer Schäferhund der Karpaten";
+        document.getElementById("ogar13").innerHTML = "Saluki";
+        document.getElementById("samoyed").innerHTML = "Samojede";
+        document.getElementById("beauceron2").innerHTML = "Schäferhund von Lagorai";
+        document.getElementById("schnauzer").innerHTML = "Schnauzer";
+        document.getElementById("keeshonden2").innerHTML = "Schwedischer Lapphund";
+        document.getElementById("german2").innerHTML = "Schwedischer Vallhund Schäferhund";
+        document.getElementById("belgian3").innerHTML = "Schweizer Weißer Schäferhund";
+        document.getElementById("westwhite2").innerHTML = "Scottish Terrier";
+        document.getElementById("carpatin2").innerHTML = "Serra da Estrela Berghund";
+        document.getElementById("sharpei").innerHTML = "Shar Pei";
+        document.getElementById("collie2").innerHTML = "Shetland Shepherd";
+        document.getElementById("shiba1").innerHTML = "Shiba Inu";
+        document.getElementById("shihtzu1").innerHTML = "Shih-Tzu";
+        document.getElementById("shiba2").innerHTML = "Shikoku Ken";
+        document.getElementById("husky").innerHTML = "Siberian Husky";
+        document.getElementById("skye1").innerHTML = "Skye Terrier";
+        document.getElementById("ogar14").innerHTML = "Sloughi";
+        document.getElementById("collie3").innerHTML = "Smooth Collie";
+        document.getElementById("portughez2").innerHTML = "Spanischem Wasserhund";
+        document.getElementById("ogar11").innerHTML = "Spanish Greyhound";
+        document.getElementById("napoletan2").innerHTML = "Spanischer Mastiff";
+        document.getElementById("pointer2").innerHTML = "Spinone Italiano";
+        document.getElementById("amstaff2").innerHTML = "Staffordshire Bull Terrier";
+        document.getElementById("mioritic2").innerHTML = "Südlicher Russischer Schäferhund";
+        document.getElementById("malamut2").innerHTML = "Tamaskan";
+        document.getElementById("terranova1").innerHTML = "Terranova";
+        document.getElementById("rhodesian4").innerHTML = "Thai Ridgeback Dog";
+        // document.getElementById("terriertibetan").innerHTML = "Tibet Terrier";
+        document.getElementById("spanieltibetan1").innerHTML = "Tibetan Spaniel";
+        document.getElementById("mastifftibetan1").innerHTML = "Tibetaner Mastiff";
+        document.getElementById("bobtail2").innerHTML = "Tiefland-Polnischer Schäferhund";
+        document.getElementById("bullmastiff3").innerHTML = "Tosa Inu";
+        document.getElementById("bassetHoundul2").innerHTML = "Transylvanian Hound";
+        document.getElementById("cehoslovac1").innerHTML = "Tschechoslowakische Wolf";
+        document.getElementById("ogar10").innerHTML = "Ungarischer Windhund";
+        document.getElementById("vizsla1").innerHTML = "Vizsla";
+        document.getElementById("weimaraner").innerHTML = "Weimaraner";
+        document.getElementById("welsh").innerHTML = "Welsh Terrier";
+        document.getElementById("westwhite1").innerHTML = "West Highland White Terrier";
+        document.getElementById("ogar7").innerHTML = "Windhund";
+        document.getElementById("ogar15").innerHTML = "Whippet";
+        document.getElementById("pointer3").innerHTML = "Wirehaired Pointing Griffon Korthals";
+        document.getElementById("xolo").innerHTML = "Xoloitzcuintle";
+        document.getElementById("yorkshire1").innerHTML = "Yorkshire Terrier";
+
+
+
+        limba = "de";
+    }
+
+    function Romana() {
+
+        document.getElementById("thanks").innerHTML = "de persoane au vizitat acest site, va multumesc!"
+
+        document.getElementById("airedale1").innerHTML = "Airedale Terrier";
+        document.getElementById("akitaamerican1").innerHTML = "Akita American";
+        document.getElementById("akita1").innerHTML = "Akita Inu";
+        document.getElementById("buldog2").innerHTML = "American Bulldog";
+        document.getElementById("pitbull2").innerHTML = "American Bully";
+        document.getElementById("pitbull1").innerHTML = "American Pit Bull Terrier";
+        document.getElementById("amstaff1").innerHTML = "American Staffordshire Terrier";
+        document.getElementById("cocker2").innerHTML = "Aristocrat Clumber Spaniel";
+        document.getElementById("cattle").innerHTML = "Australian Cattle Dog";
+        document.getElementById("yorkshire2").innerHTML = "Australian Silky Terrier";
+        document.getElementById("ogar1").innerHTML = "Azawakh";
+        document.getElementById("ogar2").innerHTML = "Barzoi";
+        document.getElementById("bassetHoundul1").innerHTML = "Basset Hound";
+        document.getElementById("beagle").innerHTML = "Beagle";
+        document.getElementById("beauceron1").innerHTML = "Beauceron";
+        document.getElementById("bedlington1").innerHTML = "Bedlington Terrier";
+        document.getElementById("bolognez1").innerHTML = "Bichon Bolognez";
+        document.getElementById("frise").innerHTML = "Bichon Frisé";
+        document.getElementById("shihtzu2").innerHTML = "Bichon Havanez";
+        document.getElementById("maltez").innerHTML = "Bichon Maltez";
+        document.getElementById("blackrussian").innerHTML = "Black Russian Terrier";
+        document.getElementById("bloodhound1").innerHTML = "Bloodhound";
+        document.getElementById("bobtail1").innerHTML = "Bobtail";
+        document.getElementById("corso2").innerHTML = "Boerboel";
+        document.getElementById("border").innerHTML = "Border Collie";
+        document.getElementById("borderTerrier").innerHTML = "Border Terrier";
+        document.getElementById("boxer").innerHTML = "Boxer";
+        document.getElementById("vizsla2").innerHTML = "Brac German";
+        document.getElementById("vizsla3").innerHTML = "Brac Italian";
+        document.getElementById("bullterrier").innerHTML = "Bull Terrier";
+        document.getElementById("buldog1").innerHTML = "Bulldog Englez";
+        document.getElementById("bulldogfrancez").innerHTML = "Bulldog Francez";
+        document.getElementById("bullmastiff1").innerHTML = "Bullmastiff";
+        document.getElementById("mastifftibetan3").innerHTML = "Bully Kutta";
+        document.getElementById("buldog3").innerHTML = "Ca de Bou";
+        document.getElementById("chinezesccucreasta1").innerHTML = "Caine Chinezesc cu Creasta";
+        document.getElementById("portughez1").innerHTML = "Caine de apa Portughez";
+        document.getElementById("portughez2").innerHTML = "Caine de apa Spaniol";
+        document.getElementById("carpatin2").innerHTML = "Caine de munte Estrela";
+        document.getElementById("westwhite3").innerHTML = "Cairn Terrier";
+        document.getElementById("corso1").innerHTML = "Cane Corso";
+        document.getElementById("corgi2").innerHTML = "Cardigan Welsh Corgi";
+        document.getElementById("cavalier").innerHTML = "Cavalier King Charles Spaniel";
+        document.getElementById("skye2").innerHTML = "Cesky Terrier";
+        document.getElementById("ogar3").innerHTML = "Chart Polski";
+        document.getElementById("golden2").innerHTML = "Chesapeake Bay Retriever";
+        document.getElementById("chihuahua1").innerHTML = "Chihuahua";
+        document.getElementById("chowchow").innerHTML = "Chow Chow";
+        document.getElementById("belgian3").innerHTML = "Ciobanesc Alb Elvetian";
+        document.getElementById("australian").innerHTML = "Ciobanesc Australian";
+        document.getElementById("belgian2").innerHTML = "Ciobanesc Belgian de Tervuren";
+        document.getElementById("belgian1").innerHTML = "Ciobanesc Belgian Groenendael";
+        document.getElementById("komondor2").innerHTML = "Ciobanesc Bergamasco";
+        document.getElementById("pirinei2").innerHTML = "Ciobanesc de Anatolia";
+        document.getElementById("berna").innerHTML = "Ciobanesc de Berna";
+        document.getElementById("beauceron2").innerHTML = "Ciobanesc de Lagorai";
+        document.getElementById("pirinei1").innerHTML = "Ciobanesc de Pirinei";
+        document.getElementById("collie2").innerHTML = "Ciobanesc de Shetland";
+        document.getElementById("mioritic2").innerHTML = "Ciobanesc de Sud din Rusia";
+        document.getElementById("german1").innerHTML = "Ciobanesc German";
+        document.getElementById("pirinei3").innerHTML = "Ciobanesc Maremmano Abruzzese";
+        document.getElementById("bobtail2").innerHTML = "Ciobanesc Polonez Lowland";
+        document.getElementById("carpatin1").innerHTML = "Ciobanesc Romanesc Carpatin";
+        document.getElementById("corb").innerHTML = "Ciobanesc Romanesc Corb";
+        document.getElementById("bucovina").innerHTML = "Ciobanesc Romanesc de Bucovina";
+        document.getElementById("mioritic1").innerHTML = "Ciobanesc Romanesc Mioritic";
+        document.getElementById("german2").innerHTML = "Ciobanesc Vallhund Suedez";
+        document.getElementById("pudel3").innerHTML = "Cockapoo";
+        document.getElementById("cocker1").innerHTML = "Cocker Spaniel Englez";
+        document.getElementById("collie1").innerHTML = "Collie";
+        document.getElementById("bassetHoundul2").innerHTML = "Copoi Ardelenesc";
+        document.getElementById("bloodhound3").innerHTML = "Copoi Bavarez de Munte";
+        document.getElementById("corgi").innerHTML = "Corgi";
+        document.getElementById("bolognez2").innerHTML = "Coton de Tulear";
+        document.getElementById("terranova3").innerHTML = "Curly Coated Retriever";
+        document.getElementById("dalmatian").innerHTML = "Dalmatian";
+        document.getElementById("ogar4").innerHTML = "Deerhound";
+        document.getElementById("doberman").innerHTML = "Doberman Pinscher";
+        document.getElementById("argentin1").innerHTML = "Dog Argentinian";
+        document.getElementById("doggerman").innerHTML = "Dog German";
+        document.getElementById("dogbordeaux1").innerHTML = "Dogue de Bordeaux";
+        document.getElementById("pointer4").innerHTML = "Drahtaar";
+        document.getElementById("cehoslovac2").innerHTML = "Elkhound Norvegian";
+        document.getElementById("setter5").innerHTML = "Épagneul Breton";
+        document.getElementById("napoletan4").innerHTML = "Fila Brasileiro";
+        document.getElementById("fox").innerHTML = "Fox Terrier";
+        document.getElementById("bloodhound2").innerHTML = "German Sheperd Bloodhound";
+        document.getElementById("golden1").innerHTML = "Golden Retriever";
+        document.getElementById("pudel2").innerHTML = "GoldenDoodle";
+        document.getElementById("setter4").innerHTML = "Gordon Setter";
+        document.getElementById("ogar5").innerHTML = "Greyhound";
+        document.getElementById("akita3").innerHTML = "Hockkaido-inu";
+        document.getElementById("husky").innerHTML = "Husky Siberian";
+        document.getElementById("irish1").innerHTML = "Irish Terrier";
+        document.getElementById("ogar6").innerHTML = "Irish Wolfhound";
+        document.getElementById("jackrussel").innerHTML = "Jack Russell Terrier";
+        document.getElementById("akita4").innerHTML = "Kai Ken";
+        document.getElementById("keeshonden1").innerHTML = "Keeshonden";
+        document.getElementById("irish2").innerHTML = "Kerry Blue Terrier";
+        document.getElementById("akita2").innerHTML = "Kishu";
+        document.getElementById("rhodesian2").innerHTML = "Kombai";
+        document.getElementById("komondor1").innerHTML = "Komondor";
+        document.getElementById("mastifftibetan2").innerHTML = "Korean Dosa Mastiff";
+        document.getElementById("labradoodle").innerHTML = "Labradoodle";
+        document.getElementById("labrador").innerHTML = "Labrador";
+        document.getElementById("portughez3").innerHTML = "Lagotto Romagnolo";
+        document.getElementById("terranova2").innerHTML = "Landseer";
+        document.getElementById("saintberanard2").innerHTML = "Leonberger";
+        document.getElementById("cehoslovac1").innerHTML = "Lup Cehoslovac";
+        document.getElementById("malamut1").innerHTML = "Malamut de Alaska";
+        document.getElementById("malionois").innerHTML = "Malinois";
+        document.getElementById("manchester").innerHTML = "Manchester Terrier";
+        document.getElementById("dogbordeaux2").innerHTML = "Mastiff Danez";
+        document.getElementById("napoletan3").innerHTML = "Mastiff de Pirinei";
+        document.getElementById("bullmastiff2").innerHTML = "Mastiff Englez";
+        document.getElementById("napoletan1").innerHTML = "Mastiff Napoletan";
+        document.getElementById("napoletan2").innerHTML = "Mastiff Spaniol";
+        document.getElementById("mastifftibetan1").innerHTML = "Mastiff Tibetan";
+        document.getElementById("metis").innerHTML = "Metis";
+        document.getElementById("ogar7").innerHTML = "Ogar";
+        document.getElementById("ogar8").innerHTML = "Ogar Afghan";
+        document.getElementById("ogar9").innerHTML = "Ogar de Ibiza";
+        document.getElementById("ogar10").innerHTML = "Ogar Maghiar";
+        document.getElementById("ogar11").innerHTML = "Ogar Spaniol";
+        document.getElementById("parsonterrier").innerHTML = "Parson Russell Terrier";
+        document.getElementById("spanieltibetan2").innerHTML = "Pechinez";
+        document.getElementById("chinezesccucreasta2").innerHTML = "Perro sin pelo del Perú";
+        document.getElementById("rhodesian5").innerHTML = "Phu Quoc Ridgeback";
+        document.getElementById("ogar12").innerHTML = "Picollo Levriero Italiano";
+        document.getElementById("chihuahua2").innerHTML = "Pinscher";
+        document.getElementById("pointer1").innerHTML = "Pointer Englez";
+        document.getElementById("pointer5").innerHTML = "Pointer Portughez";
+        document.getElementById("corgi1").innerHTML = "Pombroke Welsh Corgi";
+        document.getElementById("pomeranian").innerHTML = "Pomeranian";
+        document.getElementById("argentin2").innerHTML = "Presa Canario";
+        document.getElementById("pudel1").innerHTML = "Pudel";
+        document.getElementById("pug").innerHTML = "Pug";
+        document.getElementById("bedlington2").innerHTML = "Pumi";
+        document.getElementById("rhodesian3").innerHTML = "Razorback Cambogian";
+        document.getElementById("rhodesian1").innerHTML = "Rhodesian Ridgeback";
+        document.getElementById("rottweiler").innerHTML = "Rottweiler";
+        document.getElementById("saintberanard1").innerHTML = "Saint-Bernard";
+        document.getElementById("ogar13").innerHTML = "Saluki";
+        document.getElementById("samoyed").innerHTML = "Samoyed";
+        document.getElementById("schnauzer").innerHTML = "Schnauzer";
+        document.getElementById("westwhite2").innerHTML = "Scottish Terrier";
+        document.getElementById("setter1").innerHTML = "Setter Englez";
+        document.getElementById("setter2").innerHTML = "Setter Irlandez";
+        document.getElementById("setter3").innerHTML = "Setter Irlandez Rosu si Alb";
+        document.getElementById("sharpei").innerHTML = "Shar Pei";
+        document.getElementById("shiba1").innerHTML = "Shiba Inu";
+        document.getElementById("shihtzu1").innerHTML = "Shih-Tzu";
+        document.getElementById("shiba2").innerHTML = "Shikoku Ken";
+        document.getElementById("skye1").innerHTML = "Skye Terrier";
+        document.getElementById("ogar14").innerHTML = "Sloughi";
+        document.getElementById("collie3").innerHTML = "Smooth Collie";
+        document.getElementById("spanieltibetan1").innerHTML = "Spaniel Tibetan";
+        document.getElementById("pointer2").innerHTML = "Spinone Italian";
+        document.getElementById("cocker3").innerHTML = "Springer Spaniel Englez";
+        document.getElementById("amstaff2").innerHTML = "Staffordshire Bull Terrier";
+        document.getElementById("keeshonden2").innerHTML = "Swedish Lapphund";
+        document.getElementById("malamut2").innerHTML = "Tamaskan";
+        document.getElementById("teckel").innerHTML = "Teckel";
+        document.getElementById("terranova1").innerHTML = "Terra Nova";
+        // document.getElementById("terriertibetan1").innerHTML = "Terrier Tibetan";
+        document.getElementById("rhodesian4").innerHTML = "Thai Ridgeback Dog";
+        document.getElementById("bullmastiff3").innerHTML = "Tosa Inu";
+        document.getElementById("vizsla1").innerHTML = "Vizsla";
+        document.getElementById("weimaraner").innerHTML = "Weimaraner";
+        document.getElementById("welsh").innerHTML = "Welsh Terrier";
+        document.getElementById("westwhite1").innerHTML = "West Highland White Terrier";
+        document.getElementById("ogar15").innerHTML = "Whippet";
+        document.getElementById("pointer3").innerHTML = "Wirehaired Pointing Griffon Korthals";
+        document.getElementById("xolo").innerHTML = "Xoloitzcuintle";
+        document.getElementById("yorkshire1").innerHTML = "Yorkshire Terrier";
+
+
+        limba = "ro";
+    }</script>
