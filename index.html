@@ -14985,16 +14985,24 @@
 
       <script>
             //Functia care imi va contoriza vizitatorii:
-            const numarat = document.getElementById("count");
-       
-       function Vizite() {
-       
-               fetch('https://api.countapi.xyz/update/dogs-mindfulness/mindfulness/?amount=1')
-               .then(res => res.json())
-               .then(res => {
-                       numarat.innerHTML = res.value;
-       })
-       }
+          
+  const numarat = document.getElementById("count");
+
+  function Vizite() {
+    fetch('https://83cb7e41-4a5d-4103-91bb-89e4bc1e603d-00-1jls1ssx0qj7g.picard.replit.dev/visits')
+      .then(res => res.json())
+      .then(res => {
+        numarat.innerHTML = res.value;
+      })
+      .catch(err => {
+        console.error("Eroare la contor:", err);
+        numarat.innerHTML = "0";
+      });
+  }
+
+  Vizite();
+</script>
+
        
        Vizite();
        //Search();
