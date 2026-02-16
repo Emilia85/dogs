@@ -13059,6 +13059,21 @@
             else
             alert('Lembre-se de que você tem um cachorro, não um gato ou um robô de estimação! Menos de 1 hora por dia é muito pouco tempo gasto fora de casa para um cão, independentemente da raça ou tamanho. A partir de amanhã, tente remediar a situação, reservando mais tempo para a caminhada de quadrúpede. Você é o único responsável pelo bem estar do seu cão, o abandono não é a solução!!!');
       }
+      document.addEventListener("DOMContentLoaded", function() {
+
+const numarat = document.getElementById("count");
+
+fetch('https://api.countapi.xyz/hit/emilia85-dogs-site/totalvisits')
+  .then(res => res.json())
+  .then(data => {
+    numarat.textContent = data.value;
+  })
+  .catch(err => {
+    console.error("Eroare counter:", err);
+    numarat.textContent = "0";
+  });
+
+});
    </script>
 </head>
 <body>
@@ -14983,31 +14998,6 @@
 
 <h4 id="photos">&#9733; Toate drepturile asupra fotografiilor sunt rezervate autorilor de drept (copyright)!</h4>
 
-      <script>
-            //Functia care imi va contoriza vizitatorii:
-          
-  const numarat = document.getElementById("count");
-
-  function Vizite() {
-    fetch('https://83cb7e41-4a5d-4103-91bb-89e4bc1e603d-00-1jls1ssx0qj7g.picard.replit.dev/visits')
-      .then(res => res.json())
-      .then(res => {
-        numarat.innerHTML = res.value;
-      })
-      .catch(err => {
-        console.error("Eroare la contor:", err);
-        numarat.innerHTML = "0";
-      });
-  }
-
-  Vizite();
-</script>
-
-       
-       Vizite();
-       //Search();
-       //getLocaleLanguage();
-       </script>
 
 </body>
 </html>
