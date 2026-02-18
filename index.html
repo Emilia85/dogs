@@ -1666,32 +1666,69 @@
       }
 
       }
-      .paw-print {
-  position: fixed;
-  width: 22px;
-  height: 22px;
-  background: url("ldog.jpeg") no-repeat center;
-  background-size: contain;
-  pointer-events: none;
-  opacity: 0.9;
-  animation: pawTrail 1.4s forwards ease-out;
-  z-index: 998;
-}
+      /* Butonul lăbuță */
+            #powButton {
+            display: none;
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
 
-@keyframes pawTrail {
-  0% {
-    transform: scale(0.5) rotate(0deg);
-    opacity: 0.9;
-  }
-  40% {
-    transform: scale(1) rotate(15deg);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(0.8) translateY(35px);
-    opacity: 0;
-  }
-}
+            width: clamp(50px, 9vw, 75px);
+            height: clamp(65px, 11vw, 95px);
+
+            border: none;
+            background: url("paw.png") no-repeat center;
+            background-size: contain;
+            background-color: transparent;
+            cursor: pointer;
+
+            opacity: 0;
+            transform: scale(0.8);
+
+            animation: pawBounce 1.8s infinite;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            /* Devine vizibil când scroll > 250px */
+            #powButton.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+            }
+
+            /* Urmele lăsate */
+            .paw-print {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            background: url("ldog.jpeg") no-repeat center;
+            background-size: contain;
+            pointer-events: none;
+            opacity: 0.9;
+            animation: pawTrail 1.4s forwards ease-out;
+            z-index: 998;
+            }
+
+            @keyframes pawTrail {
+            0% { transform: scale(0.5) rotate(0deg); opacity: 0.9; }
+            40% { transform: scale(1) rotate(15deg); opacity: 0.7; }
+            100% { transform: scale(0.8) translateY(35px); opacity: 0; }
+            }
+
+            /* Bounce lăbuță */
+            @keyframes pawBounce {
+            0%   { transform: translateY(0); }
+            30%  { transform: translateY(-12px); }
+            50%  { transform: translateY(0); }
+            70%  { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+            }
+
+            /* Hover și click */
+            #powButton:hover { transform: scale(1.15) rotate(-8deg); }
+            #powButton:active { transform: scale(0.9) rotate(8deg); }
+
 
 
   </style>
@@ -15011,6 +15048,7 @@
 
 <h4 id="photos">&#9733; Toate drepturile asupra fotografiilor sunt rezervate autorilor de drept (copyright)!</h4>
 <button id="powButton" title="Pow to top"></button>
+
       <script>
             //Functia care imi va contoriza vizitatorii:
           
@@ -15026,25 +15064,26 @@
                   //Search();
                  //getLocaleLanguage();
              
-                 document.addEventListener("DOMContentLoaded", function () {
+                 
+                  document.addEventListener("DOMContentLoaded", function () {
 
-                  const powButton = document.getElementById("powButton"); // referință la buton
+                  const powButton = document.getElementById("powButton");
                   if (!powButton) return;
 
                   window.addEventListener("scroll", function () {
                   if (window.scrollY > 250) {
-                  powButton.classList.add("show");
+                        powButton.classList.add("show");
                   } else {
-                  powButton.classList.remove("show");
+                        powButton.classList.remove("show");
                   }
                   });
 
                   powButton.addEventListener("click", function () {
-                  createTrail(powButton); // transmitem butonul
+                  createTrail(powButton);
 
                   window.scrollTo({
-                  top: 0,
-                  behavior: "smooth"
+                        top: 0,
+                        behavior: "smooth"
                   });
                   });
 
@@ -15052,10 +15091,10 @@
                   const rect = button.getBoundingClientRect();
 
                   for (let i = 0; i < 4; i++) {
-                  setTimeout(() => {
+                        setTimeout(() => {
 
                         const paw = document.createElement("div");
-                        paw.className = "paw-print"; // clasa pentru urme
+                        paw.className = "paw-print";
 
                         const offsetX = (i % 2 === 0) ? -15 : 15;
 
@@ -15064,15 +15103,14 @@
 
                         document.body.appendChild(paw);
 
-                        setTimeout(() => {
-                        paw.remove();
-                        }, 1400);
+                        setTimeout(() => paw.remove(), 1400);
 
-                  }, i * 120);
+                        }, i * 120);
                   }
                   }
 
                   });
+
 
 
        </script>
