@@ -1666,6 +1666,34 @@
       }
 
       }
+      .paw-print {
+  position: fixed;
+  width: 22px;
+  height: 22px;
+  background: url("paw.png") no-repeat center;
+  background-size: contain;
+  pointer-events: none;
+  opacity: 0.9;
+  animation: pawTrail 1.4s forwards ease-out;
+  z-index: 998;
+}
+
+@keyframes pawTrail {
+  0% {
+    transform: scale(0.5) rotate(0deg);
+    opacity: 0.9;
+  }
+  40% {
+    transform: scale(1) rotate(15deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0.8) translateY(35px);
+    opacity: 0;
+  }
+}
+
+
   </style>
   <script type>
 		
@@ -13059,21 +13087,6 @@
             else
             alert('Lembre-se de que você tem um cachorro, não um gato ou um robô de estimação! Menos de 1 hora por dia é muito pouco tempo gasto fora de casa para um cão, independentemente da raça ou tamanho. A partir de amanhã, tente remediar a situação, reservando mais tempo para a caminhada de quadrúpede. Você é o único responsável pelo bem estar do seu cão, o abandono não é a solução!!!');
       }
-      document.addEventListener("DOMContentLoaded", function() {
-
-const numarat = document.getElementById("count");
-
-fetch('https://api.countapi.xyz/hit/emilia85-dogs-site/totalvisits')
-  .then(res => res.json())
-  .then(data => {
-    numarat.textContent = data.value;
-  })
-  .catch(err => {
-    console.error("Eroare counter:", err);
-    numarat.textContent = "0";
-  });
-
-});
    </script>
 </head>
 <body>
@@ -14997,7 +15010,72 @@ fetch('https://api.countapi.xyz/hit/emilia85-dogs-site/totalvisits')
 </section>
 
 <h4 id="photos">&#9733; Toate drepturile asupra fotografiilor sunt rezervate autorilor de drept (copyright)!</h4>
+<button id="powButton" title="Pow to top"></button>
+      <script>
+            //Functia care imi va contoriza vizitatorii:
+          
+            const numarat = document.getElementById("count");
 
+            function Vizite() { 
+                  fetch('https://api.countapi.xyz/update/dogs-mindfulness/mindfulness/?amount=1') 
+                  .then(res => res.json()) 
+                  .then(res => { numarat.innerHTML = res.value;
+                  })
+            }
+                  Vizite();
+                  //Search();
+                 //getLocaleLanguage();
+             
+            document.addEventListener("DOMContentLoaded", function () {
+
+            const powButton = document.getElementById("powButton");
+            if (!powButton) return; // prevenim eroare dacă nu există
+
+            window.addEventListener("scroll", function () {
+            if (window.scrollY > 250) {
+                  powButton.classList.add("show");
+            } else {
+                  powButton.classList.remove("show");
+            }
+            });
+
+            powButton.addEventListener("click", function () {
+            createTrail(powButton);
+
+            window.scrollTo({
+                  top: 0,
+                  behavior: "smooth"
+            });
+            });
+
+            function createTrail(button) {
+            const rect = button.getBoundingClientRect();
+
+            for (let i = 0; i < 4; i++) {
+                  setTimeout(() => {
+
+                  const paw = document.createElement("div");
+                  paw.className = "paw-print";
+
+                  const offsetX = (i % 2 === 0) ? -15 : 15;
+
+                  paw.style.left = (rect.left + offsetX + 20) + "px";
+                  paw.style.top = (rect.top + i * 10) + "px";
+
+                  document.body.appendChild(paw);
+
+                  setTimeout(() => {
+                  paw.remove();
+                  }, 1400);
+
+                  }, i * 120);
+            }
+            }
+
+});
+
+
+       </script>
 
 </body>
 </html>
