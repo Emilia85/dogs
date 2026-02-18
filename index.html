@@ -15026,53 +15026,53 @@
                   //Search();
                  //getLocaleLanguage();
              
-            document.addEventListener("DOMContentLoaded", function () {
+                 document.addEventListener("DOMContentLoaded", function () {
 
-            const powButton = document.getElementById("powButton");
-            if (!powButton) return; // prevenim eroare dacă nu există
+                  const powButton = document.getElementById("powButton"); // referință la buton
+                  if (!powButton) return;
 
-            window.addEventListener("scroll", function () {
-            if (window.scrollY > 250) {
+                  window.addEventListener("scroll", function () {
+                  if (window.scrollY > 250) {
                   powButton.classList.add("show");
-            } else {
+                  } else {
                   powButton.classList.remove("show");
-            }
-            });
+                  }
+                  });
 
-            powButton.addEventListener("click", function () {
-            createTrail(powButton);
+                  powButton.addEventListener("click", function () {
+                  createTrail(powButton); // transmitem butonul
 
-            window.scrollTo({
+                  window.scrollTo({
                   top: 0,
                   behavior: "smooth"
-            });
-            });
+                  });
+                  });
 
-            function createTrail(button) {
-            const rect = button.getBoundingClientRect();
+                  function createTrail(button) {
+                  const rect = button.getBoundingClientRect();
 
-            for (let i = 0; i < 4; i++) {
+                  for (let i = 0; i < 4; i++) {
                   setTimeout(() => {
 
-                  const paw = document.createElement("div");
-                  paw.className = "paw-print";
+                        const paw = document.createElement("div");
+                        paw.className = "paw-print"; // clasa pentru urme
 
-                  const offsetX = (i % 2 === 0) ? -15 : 15;
+                        const offsetX = (i % 2 === 0) ? -15 : 15;
 
-                  paw.style.left = (rect.left + offsetX + 20) + "px";
-                  paw.style.top = (rect.top + i * 10) + "px";
+                        paw.style.left = (rect.left + offsetX + 20) + "px";
+                        paw.style.top = (rect.top + i * 10) + "px";
 
-                  document.body.appendChild(paw);
+                        document.body.appendChild(paw);
 
-                  setTimeout(() => {
-                  paw.remove();
-                  }, 1400);
+                        setTimeout(() => {
+                        paw.remove();
+                        }, 1400);
 
                   }, i * 120);
-            }
-            }
+                  }
+                  }
 
-});
+                  });
 
 
        </script>
