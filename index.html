@@ -1667,69 +1667,43 @@
 
       }
       /* Butonul lăbuță */
-            #powButton {
-            display: none;
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 999;
+      #powButton {
+      display: none; /* ascuns inițial */
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      border: none;
+      background: url("ldog.jpeg") no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+      z-index: 999;
+      }
 
-            width: clamp(50px, 9vw, 75px);
-            height: clamp(65px, 11vw, 95px);
+      .paw-print {
+      width: 20px;
+      height: 20px;
+      position: fixed;
+      pointer-events: none;
+      background: url("ldog.jpeg") no-repeat center;
+      background-size: contain;
+      opacity: 0.8;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+      animation: paw-fall 1s forwards;
+      z-index: 998;
+      }
 
-            border: none;
-            background: url("paw.png") no-repeat center;
-            background-size: contain;
-            background-color: transparent;
-            cursor: pointer;
-
-            opacity: 0;
-            transform: scale(0.8);
-
-            animation: pawBounce 1.8s infinite;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            }
-
-            /* Devine vizibil când scroll > 250px */
-            #powButton.show {
-            display: block;
-            opacity: 1;
-            transform: scale(1);
-            }
-
-            /* Urmele lăsate */
-            .paw-print {
-            position: fixed;
-            width: 25px;
-            height: 25px;
-            background: url("ldog.jpeg") no-repeat center;
-            background-size: contain;
-            pointer-events: none;
-            opacity: 0.9;
-            animation: pawTrail 1.4s forwards ease-out;
-            z-index: 998;
-            }
-
-            @keyframes pawTrail {
-            0% { transform: scale(0.5) rotate(0deg); opacity: 0.9; }
-            40% { transform: scale(1) rotate(15deg); opacity: 0.7; }
-            100% { transform: scale(0.8) translateY(35px); opacity: 0; }
-            }
-
-            /* Bounce lăbuță */
-            @keyframes pawBounce {
-            0%   { transform: translateY(0); }
-            30%  { transform: translateY(-12px); }
-            50%  { transform: translateY(0); }
-            70%  { transform: translateY(-6px); }
-            100% { transform: translateY(0); }
-            }
-
-            /* Hover și click */
-            #powButton:hover { transform: scale(1.15) rotate(-8deg); }
-            #powButton:active { transform: scale(0.9) rotate(8deg); }
-
-
+      @keyframes paw-fall {
+      0% {
+      transform: translateY(0) scale(1);
+      opacity: 0.8;
+      }
+      100% {
+      transform: translateY(40px) scale(0.7);
+      opacity: 0;
+      }
+      }
 
   </style>
   <script type>
@@ -15064,54 +15038,41 @@
                   //Search();
                  //getLocaleLanguage();
              
-                 
-                  document.addEventListener("DOMContentLoaded", function () {
+                 const powButton = document.getElementById("powButton");
 
-                  const powButton = document.getElementById("powButton");
-                  if (!powButton) return;
-
-                  window.addEventListener("scroll", function () {
+                  // Arată/ascunde butonul la scroll
+                  window.addEventListener("scroll", () => {
                   if (window.scrollY > 250) {
-                        powButton.classList.add("show");
+                  powButton.style.display = "block";
                   } else {
-                        powButton.classList.remove("show");
+                  powButton.style.display = "none";
                   }
                   });
 
-                  powButton.addEventListener("click", function () {
-                  createTrail(powButton);
+                  // Functia pentru scroll la început
+                  function scrollToTop() {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
 
-                  window.scrollTo({
-                        top: 0,
-                        behavior: "smooth"
-                  });
-                  });
-
-                  function createTrail(button) {
-                  const rect = button.getBoundingClientRect();
-
+                  // Funcția care lasă 4 urme mici când apeși butonul
+                  function leavePaws(x, y) {
                   for (let i = 0; i < 4; i++) {
-                        setTimeout(() => {
-
-                        const paw = document.createElement("div");
-                        paw.className = "paw-print";
-
-                        const offsetX = (i % 2 === 0) ? -15 : 15;
-
-                        paw.style.left = (rect.left + offsetX + 20) + "px";
-                        paw.style.top = (rect.top + i * 10) + "px";
-
-                        document.body.appendChild(paw);
-
-                        setTimeout(() => paw.remove(), 1400);
-
-                        }, i * 120);
+                  const paw = document.createElement("div");
+                  paw.className = "paw-print";
+                  paw.style.left = `${x + (i * 15)}px`;
+                  paw.style.top = `${y + (i * 10)}px`;
+                  document.body.appendChild(paw);
+                  setTimeout(() => paw.remove(), 1000);
                   }
                   }
 
+                  // La click pe buton, lasă urmele și dă scroll la început
+                  powButton.addEventListener("click", (e) => {
+                  leavePaws(e.clientX, e.clientY);
+                  scrollToTop();
                   });
 
-
+                                    
 
        </script>
 
